@@ -1,0 +1,73 @@
+/* Extracted from: includes/popup.php */
+
+div#popup-box {
+    position: fixed;
+    background-color: #ff572282;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backdrop-filter: blur(11px);
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    }
+    .button-box {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        margin: 0px 0 0;
+        flex-direction: row-reverse;
+    }
+    body #continueBtnpopup2.btn-primary.danger {
+        background: #8CC540 !important;
+        border: #8CC540 !important;
+    }
+
+    .btn-primary.half-btn {width: 50% !important;}
+    body #continueBtnpopup.btn-primary, body #continueBtnpopup2.btn-primary {
+        background: black;
+        width: 100%;
+        padding: 11px 13px 9px;
+        border-radius: 29px !important;
+        font-size: 21px;
+        font-weight: 500;
+        margin: 10px 0px 0px;
+    }
+    img#popup-icon {
+        width: 120px;
+        margin-bottom: 30px;
+    }
+    div#popup-box .box-pop {
+        background: #fff;
+        padding: 30px 30px;
+        max-width: 400px;
+        width: 100%;
+        min-width: 340px;
+        position: relative;
+        border-radius: 22px;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        color: black;
+    }
+
+    div#popup-box .box-pop h4.popun-title {
+        font-weight: 600;
+    }
+
+    div#popup-box .box-pop .closeicon {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    div#popup-box .box-pop .closeicon i {
+        font-size: 28px;
+        font-weight: 800;
+    }
+

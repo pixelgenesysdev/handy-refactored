@@ -1,0 +1,134 @@
+/* Extracted from: pages/reviews.php */
+
+#reviewsPage .rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  #reviewsPage .rating-bars {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  #reviewsPage .rating-bar {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+
+  #reviewsPage .bar-label {
+    width: 15px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+
+  #reviewsPage .bar {
+    flex: 1;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  #reviewsPage .bar-fill {
+    height: 100%;
+    background: #ff6f2d;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+
+  #reviewsPage .avg-rating {
+    text-align: right;
+  }
+
+  #reviewsPage .avg-rating h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  #reviewsPage .avg-rating p {
+    color: #666;
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
+
+  #reviewsPage .review-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  #reviewsPage .review-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  #reviewsPage .stars {
+    color: #ffb400;
+    font-size: 16px;
+  }
+
+  #reviewsPage .review-title {
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  #reviewsPage .review-meta {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  #reviewsPage .review-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  #reviewsPage .review-helpful {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  #reviewsPage .review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  #reviewsPage .btn {
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  #reviewsPage .btn.active {
+    background: #ff6f2d;
+    color: #fff;
+    border: none;
+  }
+
+  @media(max-width: 600px) {
+    #reviewsPage .rating-summary {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+   #reviewsPage  .avg-rating {
+      text-align: left;
+      margin-top: 10px;
+    }
+  }
+

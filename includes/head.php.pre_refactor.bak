@@ -1,0 +1,15 @@
+<?php
+// Consolidated head include: links to single global CSS and single JS file
+?>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title><?php echo isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME; ?></title>
+<link rel="icon" href="<?php echo SITE_URL; ?>/assets/images/favicon.png" />
+<!-- Global stylesheet -->
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css" />
+<!-- Global JS (deferred) -->
+<script src="<?php echo SITE_URL; ?>/assets/js/main.js" defer></script>
+<?php
+// Additional per-page CSS/JS can be added by setting $extra_head variable before including this file.
+if (isset($extra_head)) echo $extra_head;
+?>

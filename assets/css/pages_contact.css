@@ -1,0 +1,73 @@
+/* Extracted from: pages/contact.php */
+
+.modern-form .form-label {
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+
+  .modern-form .form-control {
+    border: none;
+    border-bottom: 2px solid #ddd;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 10px 5px;
+    font-size: 1rem;
+    color: #222;
+    transition: all 0.3s ease;
+  }
+
+  .modern-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .modern-form .form-control::placeholder {
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+
+  textarea.form-control {
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    min-height: 140px;
+    transition: border 0.3s ease;
+  }
+
+  textarea.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(140, 197, 64, 0.15);
+  }
+
+  /* 🌱 Submit Button */
+  .btn-modern {
+    background-color:  var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px  var(--primary-color);
+  }
+
+  .btn-modern:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px  var(--primary-color);
+  }
+
+  .btn-modern:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px  var(--primary-color);
+  }
+
+  .modern-form {
+      width: 80% !important;
+      padding: 10px 0 30px;
+  }
+
