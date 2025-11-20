@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'provider') {
+    header("Location: dashboard.php");
+    exit();
+}
+
 $page_js = 'pages_alljobs.js';
 
 $page_css = 'page_alljobs.css';

@@ -9,12 +9,12 @@
             <h2>Welcome Back!</h2>
              <p>Enter your Sign In details below.</p>
              
-             <form class="signup-form form">
+             <form action="login-process.php" method="POST" class="signup-form form">
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <div class="input-wrapper">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email"  required placeholder="Enter Email Address">
+                            <input type="email" name="email" id="email"  required placeholder="Enter Email Address">
                         </div>
                     </div>
 
@@ -23,7 +23,7 @@
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
-                                <input type="password" id="password"  class="toggle-password" required placeholder="Enter password">
+                                <input type="password" name="password" id="password"  class="toggle-password" required placeholder="Enter password">
                                 <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
         
@@ -38,10 +38,9 @@
                         </div>
                         <div class="forget-password"><a href="forgot-password.php">Forgot Password?</a></div>
                     </div>
-
-                    
+                    <button id="continueBtn1" type="submit" class="btn btn-primary" >Log In</button>  
             </form>
-            <button id="continueBtn" type="submit" class="btn btn-primary" >Log In</button>
+           
             <p class="bottom-link-txt">If you don't have an account! <a href="index.php">Sign Up</a></p>
 
             
@@ -51,11 +50,11 @@
 
 
 <script>
-    const continueBtn = document.getElementById('continueBtn');
+    // const continueBtn = document.getElementById('continueBtn');
 
-    continueBtn.addEventListener('click', () => {
-        window.location.href = '<?php echo SITE_URL; ?>/pages/dashboard.php'
-    })
+    // continueBtn.addEventListener('click', () => {
+    //     window.location.href = '<?php echo SITE_URL; ?>/pages/dashboard.php'
+    // })
 
 
    

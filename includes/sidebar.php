@@ -58,7 +58,7 @@
           'logout',
           'Sign Out?',
           'Yes',
-          () => { window.location.href = '<?php echo SITE_URL; ?>auth/'; }
+          () => { window.location.href = '<?php echo SITE_URL; ?>auth/logout.php'; }
       );">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/logout.png" alt="VoteNow" />
       <span>Sign Out</span>
