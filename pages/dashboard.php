@@ -6,6 +6,8 @@ if(!isset($_SESSION['user_id'])) {
 }
 $page_js = 'pages_dashboard.js';
  include '../includes/head.php';
+ $user_name = $_SESSION['user_name'];
+$user_role = $_SESSION['user_role'];
  ?>
 
 <div id="pagebox">

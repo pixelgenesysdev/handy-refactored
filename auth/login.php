@@ -1,4 +1,23 @@
-    <?php
+<?php session_start(); ?>
+<!-- Yeh upar hi daal do form ke pehle -->
+
+<?php if (isset($_SESSION['login_error'])): ?>
+<div style="background:#f8d7da;color:#721c24;padding:15px;border-radius:8px;margin:20px auto;max-width:400px;text-align:center;">
+    <strong>Error:</strong> <?= $_SESSION['login_error'] ?><br>
+    <small>Try: provider@handy.com / provider123</small>
+</div>
+<?php unset($_SESSION['login_error']); endif; ?>
+
+<?php
+
+// Agar pehle se error message hai (galat login attempt), toh dikhao
+if (isset($_SESSION['login_error'])) {
+    $error_msg = $_SESSION['login_error'];
+    unset($_SESSION['login_error']);
+} else {
+    $error_msg = '';
+}
+
      include 'includes/header.php';
      $page_title = 'Sign In';
      ?>
@@ -17,7 +36,7 @@
                             <label for="email">Email Address</label>
                             <div class="input-wrapper">
                                 <i class="fa-regular fa-envelope"></i>
-                                <input type="email" name="email" id="email" required placeholder="Enter Email Address">
+                                <input type="email" name="email" id="email" required placeholder="Enter Email Address" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                             </div>
                         </div>
 
@@ -26,7 +45,7 @@
                             <div class="input-wrapper" style="position: relative;">
                                 <i class="fa-solid fa-lock"></i>
                                 <input type="password" name="password" id="password" required placeholder="Enter password" style="width: 100%; padding-right: 40px; border: none; outline: none;">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color:#666;"></i>
                             </div>
                         </div>
 
@@ -38,7 +57,9 @@
                             <div class="forget-password"><a href="forgot-password.php">Forgot Password?</a></div>
                         </div>
                         
-                        <button id="continueBtn1" type="submit" class="btn btn-primary">Log In</button>
+                        <button id="continueBtn1" type="submit" class="btn btn-primary">
+                            Log In
+                        </button>
                     </form>
                 
                     <p class="bottom-link-txt">If you don't have an account! <a href="index.php">Sign Up</a></p>
@@ -49,14 +70,33 @@
         </div>
 
 
-    <script>
-        // const continueBtn = document.getElementById('continueBtn');
+<script>
+    // Jab form submit ho
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email    = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-        // continueBtn.addEventListener('click', () => {
-        //     window.location.href = '<?php echo SITE_URL; ?>/pages/dashboard.php'
-        // })
-
-
-    
-    </script>
+        fetch('../api/login.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                localStorage.setItem('handyUser', JSON.stringify(data.user)); // fake session
+                window.location.href = data.redirect;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Server error!');
+        });
+    });
+</script>
     <?php include 'includes/footer.php'; ?>
