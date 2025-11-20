@@ -1,28 +1,18 @@
-<?php session_start(); ?>
-<!-- Yeh upar hi daal do form ke pehle -->
+<?php
+session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
 
-<?php if (isset($_SESSION['login_error'])): ?>
-<div style="background:#f8d7da;color:#721c24;padding:15px;border-radius:8px;margin:20px auto;max-width:400px;text-align:center;">
-    <strong>Error:</strong> <?= $_SESSION['login_error'] ?><br>
-    <small>Try: provider@handy.com / provider123</small>
-</div>
-<?php unset($_SESSION['login_error']); endif; ?>
 
 <?php
-
-// Agar pehle se error message hai (galat login attempt), toh dikhao
-if (isset($_SESSION['login_error'])) {
-    $error_msg = $_SESSION['login_error'];
-    unset($_SESSION['login_error']);
-} else {
-    $error_msg = '';
-}
-
      include 'includes/header.php';
      $page_title = 'Sign In';
      ?>
 
-
+<?php if(isset($_SESSION['login_error'])) { ?>
+    <div class="alert error"><?php echo $_SESSION['login_error']; unset($_SESSION['login_error']); ?></div>
+<?php } ?>
 
         <div class="col-md-6 firstcol align-items-center d-flex p-0 text-center justify-content-center">
             <div class="firstcol-wrapper">
@@ -31,7 +21,7 @@ if (isset($_SESSION['login_error'])) {
                     <h2>Welcome Back!</h2>
                     <p>Enter your Sign In details below.</p>
                     
-                    <form action="login-process.php" method="POST" class="signup-form form">
+                    <form action="<?php echo SITE_URL; ?>/auth/login-process" method="POST" class="signup-form form">
                         <div class="form-group">
                             <label for="email">Email Address</label>
                             <div class="input-wrapper">

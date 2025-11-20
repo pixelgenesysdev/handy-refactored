@@ -1,9 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'user') {
-    header("Location: dashboard.php");
+if(!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
     exit();
 }
+
 
 $page_js = 'pages_allbookings.js';
  include '../includes/head.php';

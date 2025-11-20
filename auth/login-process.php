@@ -1,41 +1,54 @@
 <?php
 // auth/login-process.php
+ob_start();           // YE LINE ADD KAR DO → sab output buffer kar dega
 session_start();
 
-// Fake users database (ID + Name + Email + Password + Role)
-$fake_users = [
-    1 => ['id' => 1, 'name' => 'Zawwar Ahmed',     'email' => 'provider@handy.com', 'password' => 'provider123', 'role' => 'provider'],
-    2 => ['id' => 2, 'name' => 'Ali Khan',         'email' => 'user1@handy.com',    'password' => 'user123',     'role' => 'user'],
-    3 => ['id' => 3, 'name' => 'Dr. Sara',         'email' => 'doctor@handy.com',   'password' => 'doc123',      'role' => 'provider'],
-    4 => ['id' => 4, 'name' => 'Ahmed Raza',       'email' => 'user2@handy.com',    'password' => 'user456',     'role' => 'user'],
-    5 => ['id' => 5, 'name' => 'Fatima Electrician','email' => 'fatima@handy.com',   'password' => 'fatima123',   'role' => 'provider'],
-];
-
-$email    = trim($_POST['email'] ?? '');
-$password = trim($_POST['password'] ?? '');
-
-$logged_in_user = null;
-
-foreach ($fake_users as $user) {
-    if ($user['email'] === $email && $user['password'] === $password) {
-        $logged_in_user = $user;
-        break;
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die('Invalid request');
 }
 
-if ($logged_in_user) {
-    // Session mein proper data daal do
-    $_SESSION['user_id']   = $logged_in_user['id'];
-    $_SESSION['user_name'] = $logged_in_user['name'];
-    $_SESSION['user_email']= $logged_in_user['email'];
-    $_SESSION['user_role'] = $logged_in_user['role'];  // ye important hai
+$email    = trim($_POST['email'] ?? '');
+$password = $_POST['password'] ?? '';
 
-    // Success redirect
-    header("Location: ../pages/dashboard.php");
+// Fake users (testing ke liye)
+$fake_users = [
+    'admin@handy.com'    => ['pass' => 'admin123',     'role' => 'admin',    'name' => 'Admin'],
+    'provider@handy.com' => ['pass' => 'provider123',  'role' => 'provider', 'name' => 'Provider User'],
+    'customer@handy.com' => ['pass' => 'user123',      'role' => 'customer', 'name' => 'Customer User']
+];
+
+if (isset($fake_users[$email]) && $fake_users[$email]['pass'] === $password) {
+
+    // Session set karo
+    $_SESSION['loggedin']   = true;
+    $_SESSION['user_id']    = rand(100, 999); // simple ID
+    $_SESSION['user_email'] = $email;
+    $_SESSION['user_name']  = $fake_users[$email]['name'];
+    $_SESSION['user_role']  = $fake_users[$email]['role'];
+
+    // Role ke hisaab se redirect
+    if ($fake_users[$email]['role'] === 'admin') {
+        $redirect = '../pages/admin-dashboard.php';
+    } elseif ($fake_users[$email]['role'] === 'provider') {
+        $redirect = '../pages/provider-dashboard.php';
+    } else {
+        $redirect = '../pages/dashboard.php';
+    }
+
+    header("Location: $redirect");
     exit();
+
 } else {
-    $_SESSION['login_error'] = "Email ya password galat hai!";
+    $_SESSION['login_error'] = "Invalid email or password!";
     header("Location: login.php");
     exit();
 }
+
+ob_end_flush(); // end of file pe ye bhi daal sakte ho (optional)
+
+
+// all cridentials
+// admin@handy.com    admin123
+// provider@handy.com provider123
+// customer@handy.com user123
 ?>

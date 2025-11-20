@@ -1,9 +1,12 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../auth/login.php");
     exit();
 }
+// Ab role check kar sakte ho
+// if ($_SESSION['user_role'] !== 'provider') { die("Access denied"); }
+
 $page_js = 'pages_dashboard.js';
  include '../includes/head.php';
  $user_name = $_SESSION['user_name'];

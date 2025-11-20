@@ -1,15 +1,18 @@
 
     <?php include 'top_bar.php'; ?>
-<?php
+
+
+    <?php
+// includes/auth_check.php
 session_start();
-if(!isset($_SESSION['user_id'])) {
+
+// Agar login nahi hai → login page pe bhej do
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../auth/login.php");
     exit();
 }
 
-// Ab tum yahan user ka data use kar sakte ho
-$user_id    = $_SESSION['user_id'];
-$user_name  = $_SESSION['user_name'];
-$user_email = $_SESSION['user_email'];
-$user_role  = $_SESSION['user_role'];  // "user" ya "provider"
+// Current user ka role nikaal lo (har jagah use kar sakte ho)
+$current_role = $_SESSION['user_role'];  // admin, provider, customer
+$current_name = $_SESSION['user_name'];
 ?>

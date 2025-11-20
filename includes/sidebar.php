@@ -16,12 +16,17 @@
     <a id="nav-btn" class="btn-sidebar side-menu <?php echo ($currentPage == 'dashboard.php' || $currentPage == 'services.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers_details.php' || $currentPage == 'providers_services-details.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
+
     <a id="nav-btn" class="btn-sidebar side-menu <?php echo ($currentPage == 'myservices.php' || $currentPage == 'new_service.php' || $currentPage == 'myservicedetail.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/myservices"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>My Services</span>
     </a>
+
+
     <a id="nav-btn" class="btn-sidebar side-menu <?php echo ($currentPage == 'marketplace.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/marketplace"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>Marketplace</span>
     </a>
+
+
     <a id="nav-btn" class="btn-sidebar side-menu <?php echo ($currentPage == 'transactionhistory.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/transactionhistory.php">
        <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/transaction.png" alt="Transaction" /><span>Transaction History</span>
     </a>
