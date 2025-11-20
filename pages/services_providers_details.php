@@ -35,34 +35,33 @@
                 <div class="tag">English<br><span>Language</span></div>
                 <div class="tag">Male<br><span>Gender</span></div>
             </div>
-            <div id="serviceslists" class="services-lists d-flex flex-wrap">    
-                    <div class="servicebox">
+            <div id="serviceslists" class="services-lists d-flex flex-wrap gap-3">    
+
+                    <div class="servicebox" style="cursor: pointer;" onclick="window.location.href='<?php echo SITE_URL; ?>pages/providers_services-details.php'" id="serviceboxmain">
                         <div class="serviceimage">
-                            <img src="../assets/images/cleaningimage.png" alt="${service.name} Icon">
+                            <img src="../assets/images/services-images/cleaning_service_image.webp" alt="cleaning_service_image.webp Icon">
                         </div>
                         <div class="servicename">
                             <div class="serviceicon">
-                                <img src="../assets/images/servicesiconbox.png" alt="${service.name} Icon">
+                                <img src="../assets/images/servicesiconbox.png" alt="Cleaning Icon">
                             </div>
                             <div class="servicetext">    
-                                <h5>Service Name</h5>
-                                <p>Service description</p>
-                                <a class="btntransparent" href="<?php echo SITE_URL; ?>pages/providers_services-details.php">Read More</a>
+                                <h5>Cleaning</h5>
+                                <p>Cleaning discription lorem ipsum dolor sit amet consectetur adipiscing elit</p>
                             </div>
                         </div>
                     </div>
-                    <div class="servicebox">
+                    <div class="servicebox" style="cursor: pointer;" onclick="window.location.href='<?php echo SITE_URL; ?>pages/providers_services-details.php'" id="serviceboxmain">
                         <div class="serviceimage">
-                            <img src="../assets/images/cleaningimage.png" alt="${service.name} Icon">
+                            <img src="../assets/images/services-images/complete-kitchen-remodel.webp" alt="complete-kitchen-remodel Icon">
                         </div>
                         <div class="servicename">
                             <div class="serviceicon">
-                                <img src="../assets/images/servicesiconbox.png" alt="${service.name} Icon">
+                                <img src="../assets/images/servicesiconbox.png" alt="Cleaning Icon">
                             </div>
                             <div class="servicetext">    
-                                <h5>Service Name</h5>
-                                <p>Service description</p>
-                                <a class="btntransparent" href="<?php echo SITE_URL; ?>pages/providers_services-details.php">Read More</a>
+                                <h5>Kitchen</h5>
+                                <p>Upgrade kitchen layout, cabinets, countertops, and overall modern functionality.</p>
                             </div>
                         </div>
                     </div>

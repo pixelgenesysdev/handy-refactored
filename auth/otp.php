@@ -4,18 +4,16 @@ $page_js = 'auth_otp.js';
 
 
 
-<div class="col-md-6 firstcol align-items-center d-flex p-0 text-center justify-content-center">
+<div class="col-md-6 firstcol align-items-center d-flex p-0 text-center justify-content-center align-items-center">
     <div class="firstcol-wrapper">
         <div class="firstcol-box">
             <img src="./assets/img/forgot-icon.png" alt="forgot-icon" class="forgot-icon">
-            <h2>OTP!</h2>
+            <h2>Varification</h2>
              <p>Please check your email for verification code.
-                Your code is 6 digit in length.</p>
+                Your code is 4 digit in length.</p>
              
                 <form>
                 <div class="otp-inputs">
-                    <input type="text" maxlength="1" required>
-                    <input type="text" maxlength="1" required>
                     <input type="text" maxlength="1" required>
                     <input type="text" maxlength="1" required>
                     <input type="text" maxlength="1" required>

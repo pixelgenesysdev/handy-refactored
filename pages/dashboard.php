@@ -1,15 +1,17 @@
 <?php
 $page_js = 'pages_dashboard.js';
- include '../includes/head.php'; ?>
+ include '../includes/head.php';
+ ?>
 
 <div id="pagebox">
     <div class="topbarwithbtn">
         <h3 style="margin-bottom: 0px;">Our Services</h3>
         <a class="btntransparent" onclick="window.location.href='<?php echo SITE_URL; ?>pages/services.php'">View All</a>
     </div>
-    <ul id="categoriesServices">
+    <div id="categoriesServices" class="owl-carousel">
+
         <!-- Categories will be dynamically inserted here -->
-    </ul>
+    </div>
 
     <div class="topbarwithbtn">
         <h3>Select</h3>

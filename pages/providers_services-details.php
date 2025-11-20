@@ -21,7 +21,7 @@
                 <button class="btn btn-primary" onclick="window.location.href='<?php echo SITE_URL; ?>pages/reviews.php'">Reviews</button>
             </div>
             <div class="provider-servicedetails-img">
-                <img src="<?php echo SITE_URL; ?>assets/images/cleaningimage.png" alt="Certificate">
+                <img src="<?php echo SITE_URL; ?>/assets/images/services-images/complete-kitchen-remodel.webp" alt="service image">
             </div>
             <div class="about">
                 <h4>Service Name</h4>

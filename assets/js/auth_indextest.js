@@ -1,16 +1,29 @@
 // Extracted from: auth/indextest.php
 
 function selectOption(role) {
-    let selectedRole = null;
-    selectedRole = role;
-    document.getElementById('leagueOption').classList.remove('selected');
-    document.getElementById('userOption').classList.remove('selected');
 
-    if (role === 'league') {
-      document.getElementById('leagueOption').classList.add('selected');
-    } else {
-      document.getElementById('userOption').classList.add('selected');
+    const ProviderOption =document.getElementById('ProviderOption')
+    const userOption =document.getElementById('userOption')
+    const buttoncont = document.getElementById('continueBtn')
+
+    let selectedRole = null;
+
+    selectedRole = role;
+    ProviderOption.classList.remove('selected');
+    userOption.classList.remove('selected');
+
+    if (role === 'Provider') {
+      ProviderOption.classList.add('selected');
+      buttoncont.addEventListener('click', () => {
+        window.location.href = 'sign-up_provider.php'
+      })
+    } 
+    else if (role === 'user') {
+      userOption.classList.add('selected');
+      buttoncont.addEventListener('click', () => {
+        window.location.href = 'sign-up.php'
+      })
     }
-    const button = document.getElementById('continueBtn')
-    button.disabled = false;
+
+    buttoncont.disabled = false;
   }

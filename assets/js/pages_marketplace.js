@@ -86,7 +86,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 1, 
                 name: 'Product 1', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '500', 
                 description: 'Description for Product 1', 
                 owner: { 
@@ -99,7 +99,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 2, 
                 name: 'Product 2', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '600', 
                 description: 'Description for Product 2', 
                 owner: { 
@@ -112,7 +112,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 3, 
                 name: 'Product 3', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '700', 
                 description: 'Description for Product 3', 
                 owner: { 
@@ -125,7 +125,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 4, 
                 name: 'Product 4', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '800', 
                 description: 'Description for Product 4', 
                 owner: { 
@@ -138,7 +138,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 5, 
                 name: 'Product 5', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '900', 
                 description: 'Description for Product 5', 
                 owner: { 
@@ -151,7 +151,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 6, 
                 name: 'Product 6', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1000', 
                 description: 'Description for Product 6', 
                 owner: { 
@@ -164,7 +164,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 7, 
                 name: 'Product 7', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1100', 
                 description: 'Description for Product 7', 
                 owner: { 
@@ -177,7 +177,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 8, 
                 name: 'Product 8', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1200', 
                 description: 'Description for Product 8', 
                 owner: { 
@@ -190,7 +190,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 9, 
                 name: 'Product 9', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1300', 
                 description: 'Description for Product 9', 
                 owner: { 
@@ -203,7 +203,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 10, 
                 name: 'Product 10', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1400', 
                 description: 'Description for Product 10', 
                 owner: { 
@@ -216,7 +216,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 11, 
                 name: 'Product 11', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1500', 
                 description: 'Description for Product 11', 
                 owner: { 
@@ -229,7 +229,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 12, 
                 name: 'Product 12', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1600', 
                 description: 'Description for Product 12', 
                 owner: { 
@@ -242,7 +242,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 13, 
                 name: 'Product 13', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1700', 
                 description: 'Description for Product 13', 
                 owner: { 
@@ -255,7 +255,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 14, 
                 name: 'Product 14', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1800', 
                 description: 'Description for Product 14', 
                 owner: { 
@@ -268,7 +268,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 15, 
                 name: 'Product 15', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '1900', 
                 description: 'Description for Product 15', 
                 owner: { 
@@ -281,7 +281,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 16, 
                 name: 'Product 16', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '2000', 
                 description: 'Description for Product 16', 
                 owner: { 
@@ -294,7 +294,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 17, 
                 name: 'Product 17', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '2100', 
                 description: 'Description for Product 17', 
                 owner: { 
@@ -307,7 +307,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 18, 
                 name: 'Product 18', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '2200', 
                 description: 'Description for Product 18', 
                 owner: { 
@@ -320,7 +320,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 19, 
                 name: 'Product 19', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '2300', 
                 description: 'Description for Product 19', 
                 owner: { 
@@ -333,7 +333,7 @@ const productImage = document.getElementById('productImage');
             { 
                 id: 20, 
                 name: 'Product 20', 
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '2400', 
                 description: 'Description for Product 20', 
                 owner: { 
@@ -352,7 +352,7 @@ const productImage = document.getElementById('productImage');
             productCard.classList.add('productcard', 'col-6', 'col-md-4', 'col-lg-2', 'mb-2');
             productCard.innerHTML = `
                 <div class="productboxinner" onclick="showProductDetails(${product.id})">
-                    <img src="${SITE_URL}assets/images/${product.image}" alt="${product.name}">
+                    <img src="${SITE_URL}assets/images/services-images/${product.image}" alt="${product.name}">
                     <div class="productcontent">
                         <h4>${product.name}</h4>
                         <span class="productprice">$${product.price}</span>
@@ -371,10 +371,10 @@ const productImage = document.getElementById('productImage');
             const product = AllProductsData.find(p => p.id === productId);
             if (product) {
                 productsContainerDetail.innerHTML = `
-                    <div class="productdetailsboximage col-12 col-md-6">
-                        <img src="${SITE_URL}assets/images/${product.image}" alt="${product.name}">
+                    <div class="productdetailsboximage col-lg-5 col-md-12 col-12">
+                        <img src="${SITE_URL}assets/images/services-images/${product.image}" alt="${product.name}">
                     </div>
-                    <div class="productdetailsbox col-12 col-md-6">
+                    <div class="productdetailsbox col-lg-7 col-md-12 col-12 p-2">
                             <h3 class="productname">${product.name}</h3>
                             <span class="category">Category</span>
                             <span class="productprice">$${product.price}</span>
@@ -411,7 +411,7 @@ const productImage = document.getElementById('productImage');
                 id: 1, 
                 name: 'My Product 1', 
                 categpory: 'Hammers',
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '500', 
                 description: 'Description for My Product 1'
             },
@@ -419,7 +419,7 @@ const productImage = document.getElementById('productImage');
                 id: 2, 
                 name: 'My Product 2', 
                 categpory: 'Drills',
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '600', 
                 description: 'Description for My Product 2'
             },
@@ -427,7 +427,7 @@ const productImage = document.getElementById('productImage');
                 id: 3, 
                 name: 'My Product 3', 
                 categpory: 'Saws',
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '700', 
                 description: 'Description for My Product 3'
             },
@@ -435,7 +435,7 @@ const productImage = document.getElementById('productImage');
                 id: 4, 
                 name: 'My Product 4', 
                 categpory: 'Saws',
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '800', 
                 description: 'Description for My Product 4'
             },
@@ -443,7 +443,7 @@ const productImage = document.getElementById('productImage');
                 id: 5, 
                 name: 'My Product 5', 
                 categpory: 'Saws',
-                image: 'productimage.png', 
+                image: 'hands-wall-repair.webp', 
                 price: '900', 
                 description: 'Description for My Product 5'
             }
@@ -455,7 +455,7 @@ const productImage = document.getElementById('productImage');
             myProductBox.innerHTML = `
                 <div class="myproductboxcontentinner">
                     <div class="myproductboximage">
-                        <img src="${SITE_URL}assets/images/${product.image}" width="100%" alt="Product Image">
+                        <img src="${SITE_URL}assets/images/services-images/${product.image}" width="100%" alt="Product Image">
                     </div>
                     <div class="myproductboxcontent">
                     

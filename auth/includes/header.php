@@ -18,22 +18,29 @@
 <?php
 // Per-page stylesheet (set $page_css = 'filename.css' before including head.php)
 if (isset($page_css) && trim($page_css) !== '') {
-    echo '<link rel="stylesheet" href="'.SITE_URL.'/assets/css/'.htmlspecialchars($page_css, ENT_QUOTES).'">';
+    echo '<link rel="stylesheet" href="'.SITE_URL.'assets/css/'.htmlspecialchars($page_css, ENT_QUOTES).'">';
 }
 
 // Global JS (deferred)
-echo '<script src="'.SITE_URL.'/assets/js/main.js" defer></script>';
+echo '<script src="'.SITE_URL.'assets/js/main.js" defer></script>';
 
 // Per-page JS (set $page_js = 'filename.js' before including head.php)
 if (isset($page_js) && trim($page_js) !== '') {
-    echo '<script src="'.SITE_URL.'/assets/js/'.htmlspecialchars($page_js, ENT_QUOTES). '" defer></script>';
+    echo '<script src="'.SITE_URL.'assets/js/'.htmlspecialchars($page_js, ENT_QUOTES). '" defer></script>';
 }
 
 // Additional per-page head content
 if (isset($extra_head)) echo $extra_head;
 ?>
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/loader/loader.css">
+
+<script src="<?php echo SITE_URL; ?>/assets/loader/loader.js" defer></script>
+
+
 
 </head>
+
+<?php include '../includes/loader.php'; ?>
 <body>
     <?php include '../includes/popup.php'; ?>
     <div class="container-fluid">

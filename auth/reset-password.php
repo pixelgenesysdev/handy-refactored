@@ -18,18 +18,18 @@ $page_js = 'auth_reset-password.js';
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
                                 <input type="password" id="password" class="password22 toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>
 
                       <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Confirm Password</label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
                                 <input type="password" id="passwordConfirm"  class="password-confirm toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>

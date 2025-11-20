@@ -174,11 +174,11 @@ const bookingData = [
 
         if (booking.status === 'completed') {
 
-            // 🧹 Remove existing review button if any
+            // ðŸ§¹ Remove existing review button if any
             const existingBtn = bookingDetailEl.querySelector('.review-btn');
             if (existingBtn) existingBtn.remove();
 
-            // ➕ Create and append a fresh review button
+            // âž• Create and append a fresh review button
             const reviewBtn = document.createElement('button');
             reviewBtn.textContent = 'Leave a Review';
             reviewBtn.className = 'review-btn btn btn-primary';

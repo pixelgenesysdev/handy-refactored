@@ -6,15 +6,15 @@
     <div class="firstcol-wrapper">
         <div class="firstcol-box">
             <img src="./assets/img/welcome-icon.png" alt="welcome-icon" class="welcome-icon">
-            <h2>Create an Account!</h2>
+            <h2>Sign Up!</h2>
              <p>Enter your personal details below.</p>
              
              <form class="signup-form form">
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username">Full Name</label>
                         <div class="input-wrapper">
                             <i class="fa-regular fa-user"></i>
-                            <input type="text" id="username" required placeholder="Enter Username">
+                            <input type="text" id="username" required placeholder="Enter Full Name">
                         </div>
                     </div>
 
@@ -33,14 +33,43 @@
                             <input type="tel" id="phone"  required placeholder="Enter Phone Number">
                         </div>
                     </div>
+                    <!-- referal Code field -->
+                     <div class="form-group">
+                        <label for="referalCode">Referal Code</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="referalCode"  placeholder="Enter Referal Code">
+                        </div>
+                    </div>
                     <div  class="form-group">
                         <label for="password">Password</label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
                                 <input type="password" id="password"  class="toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div  class="form-group">
+                        <label for="password">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <div class="pass-box">
+                                <input type="password" id="passwordConfirm"  class="toggle-password" required placeholder="Enter password">
+                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Profile Picture -->
+                    <div class="form-group">
+                        <label for="profilePicture">Profile Picture</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="file" id="profilePicture"  required placeholder="Enter Profile Picture">
                         </div>
                     </div>
                 
@@ -59,14 +88,21 @@
                             <input type="url" id="instagram"  required placeholder="Enter Instagram URL">
                         </div>
                     </div> -->
-                     <button id="continueBtn" type="submit" class="btn btn-primary" onclick >Sign Up</button>
             </form>
-            <p class="bottom-link-txt">Already have an account! <a href="index.php">Sign In</a></p>
+            <button id="continueBtn" type="submit" class="btn btn-primary" onclick="  window.location.href = 'login.php'" >Sign Up</button>
+            <p class="bottom-link-txt">Already have an account! <a href="login.php">Sign In</a></p>
 
             
         </div>
     </div>
 </div>
+<style>
+    .firstcol-wrapper {
+    height: 86vh;
+    overflow-y: scroll;
+    padding: 20px 0px;
+}
 
+</style>
 
 <?php include 'includes/footer.php'; ?>

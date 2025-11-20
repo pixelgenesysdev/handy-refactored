@@ -6,12 +6,14 @@ $page_js = 'pages_marketplace.js';
     <!-- Top Bar with Tabs -->
 
     <div id="topbarwithbtn" class="topbarwithbtn withbackbutton d-flex justify-content-between align-items-center">
-        <h3 class="tabtitle">Marketplace</h3>
+        <h3 class="tabtitle">Market place</h3>
         <div id="marketproducttabs">
             <button class="marketproducttabbtn active" data-tab="AllProducts">Products</button>
             <button class="marketproducttabbtn" data-tab="MyProducts">My Products</button>
         </div>
     </div>
+
+      <input type="search" id="searchInput" placeholder="Search Here" />
 
     <!-- Marketplace Tab Content -->
 
@@ -55,7 +57,7 @@ $page_js = 'pages_marketplace.js';
                 <h3><i class="fa-solid fa-arrow-left"></i>Product details</h3>
             </div>
 
-            <div class="inner d-flex flex-wrap col-12 p-5 align-items-center" id="productsContainerDetail">
+            <div class="inner d-flex flex-wrap col-12  align-items-center" id="productsContainerDetail">
                 <div class="productdetailsboximage col-12 col-md-6">
                     <img src="<?php echo SITE_URL; ?>assets/images/productimage.png" alt="Product Image">
                 </div>
@@ -65,7 +67,7 @@ $page_js = 'pages_marketplace.js';
                         <span class="productprice">$500</span>
                         <p class="productdescription">This is a detailed description of the product. It provides all the necessary information that a potential buyer might need to make an informed decision about purchasing the product.</p>
                         <div class="ownerdetails">
-                            <h4>Owner Details</h4>
+                            <h4>Seller Details</h4>
                             <div class="ownerinfo">
                                 <span class="ownername"><i class="fa-solid fa-user"></i></i>John Doe</span>
                                 <span class="ownerphone"><i class="fa-solid fa-phone"></i> (123) 456-7890</span>

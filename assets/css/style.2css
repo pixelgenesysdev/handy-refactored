@@ -1,0 +1,271 @@
+/* FULL CLEANED style.css — DUPLICATES REMOVED, SECTIONS ORGANIZED */
+
+/* ======================================================
+   1) FONTS
+   ====================================================== */
+@font-face { font-family: "Hellix"; src: url("../fonts/Hellix-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "Hellix"; src: url("../fonts/Hellix-Bold.ttf") format("truetype"); font-weight: bold; font-style: normal; }
+@font-face { font-family: "roboto"; src: url("../fonts/roboto.ttf") format("truetype"); }
+
+/* ======================================================
+   2) CSS VARIABLES & GLOBAL RESET
+   ====================================================== */
+:root{
+  --primary-color:#f16622;
+  --accent-color:#f26a2e;
+  --secondary-color:#1f1f1f;
+  --background-color:#f8f8f8;
+  --text-color:#333333;
+}
+* :not(i){ font-family:"roboto" !important; }
+i{ font-family:fontawesome !important; font-size:22px; }
+
+a{ color:var(--primary-color) !important; text-decoration:none !important; font-size:20px; }
+a:hover{ color:#000 !important; cursor:pointer !important; }
+
+h3{ font-size:25px !important; font-weight:600 !important; color:#1f1f1f !important; }
+h6{ font-size:16px !important; margin:7px 0 !important; color:#1a1819; font-weight:500 !important; }
+
+.content p{ font-size:21px !important; }
+
+/* Buttons (primary) */
+.btn.btn-primary{ background:var(--primary-color); border:none; border-radius:10px; padding:12px 24px; font-size:16px; font-weight:600; transition:all .3s ease; width:fit-content; }
+.btn.btn-primary:hover{ background:#f1662273; }
+.btn.btn-primary:focus{ box-shadow:0 0 10px var(--primary-color); }
+
+/* ======================================================
+   3) SIDEBAR
+   ====================================================== */
+aside#sidebar{ background:white; border-radius:0 25px 25px 0; padding:30px 0; height:100vh; overflow-y:scroll; }
+aside#sidebar::-webkit-scrollbar{ display:none; }
+aside#sidebar .logo{text-align:center;margin-bottom: 1rem;}
+aside#sidebar .logo img{width: 100px;}
+aside#sidebar nav.menu{margin-left:15px;display:flex;flex-direction:column;gap: 4px;}
+aside#sidebar nav.menu a#nav-btn{padding: 6px 21px;display:flex;gap: 10px;align-items:center;color:black !important;font-size: 14px;transition:.5s;}
+aside#sidebar nav.menu a#nav-btn img{width: 20px;height: 20px;object-fit:contain;filter:brightness(0) saturate(100%) invert(46%) sepia(83%) saturate(1671%) hue-rotate(346deg) brightness(96%) contrast(96%);}
+aside#sidebar nav.menu a#nav-btn.active{background:var(--primary-color);border-radius:40px 0 0 40px;color:#fff !important;padding: 10px 19px;}
+aside#sidebar nav.menu a#nav-btn.active img{ filter:brightness(0) invert(1); }
+
+/* ======================================================
+   4) TOP BAR
+   ====================================================== */
+#top-bar .inner{ display:flex; align-items:center; justify-content:flex-end; gap:15px; padding:11px 20px; border-bottom:1px solid #ccc; }
+#top-bar .inner img{ width:50px; }
+#top-bar .inner i{ color:transparent; -webkit-text-stroke:2px var(--primary-color); font-size:24px; }
+
+/* ======================================================
+   5) DASHBOARD / CATEGORIES / ACTIONS
+   ====================================================== */
+ul#categoriesServices{ padding:0; margin:0; display:flex; gap:3px; flex-wrap:wrap; justify-content:space-between; }
+ul#categoriesServices li.categoryserviceitem{ list-style:none; text-align:center; }
+ul#categoriesServices .serviceicon img{ border-radius:10px; width:135px; }
+
+.topbarwithbtn{ display:flex; align-items:center; justify-content:space-between; padding:20px 0 10px; }
+.topbarwithbtn a{ font-size:20px; }
+#boxesactions{ padding-bottom:20px; gap:19px; }
+#contentboxaction{ padding:21px 6px 23px; gap:9px; }
+#contentboxaction h3{ margin:0; font-size:21px !important; }
+#boxesactions .actionbox{ background:#fef0e9; width:fit-content; border-radius:20px; cursor:pointer; }
+
+/* ======================================================
+   6) SERVICES / SERVICE BOX
+   ====================================================== */
+.servicebox{ position:relative; text-align:center; margin:10px; }
+.servicebox .serviceimage img{ width:100%; height:340px; object-fit:cover; border-radius:20px; }
+.servicebox .servicename{ background:#fff; position:absolute; left:50%; bottom:22px; transform:translateX(-50%); padding:15px 10px 10px; border-radius:10px; width:90%; display:flex; gap:10px; justify-content:flex-start; text-align:left; }
+.servicebox .servicename img{ width:58px; }
+.servicebox .servicename p{ margin:7px 0 3px; line-height:1.2; }
+.servicebox .servicename h5{ margin-bottom:0; }
+
+h3 i{ background:var(--primary-color); width:40px !important; height:40px; line-height:40px !important; border-radius:30px; font-size:17px; color:#fff; margin-right:8px; }
+
+/* ======================================================
+   7) MARKETPLACE / PRODUCT LISTING
+   ====================================================== */
+#marketproducttabs{ display:flex; width:fit-content; background:#f0f0f1; border-radius:20px; }
+.marketproducttabbtn{ background:transparent; border:none; padding:12px 29px; font-size:18px; font-weight:500; }
+.marketproducttabbtn.active{ background:var(--primary-color); color:#fff; border-radius:20px; }
+.productboxinner{ background:#fff; border-radius:20px; text-align:center; box-shadow:0 0 5px #ccc; overflow:hidden; cursor:pointer; }
+.productboxinner .productcontent{ padding:14px 10px; }
+.productboxinner h4{ margin:0 0 3px; font-size:24px; }
+.productcard{ position:relative; padding:7px; }
+.productcard img{ width:100%; }
+.productcard span.productprice{ font-size:20px; font-weight:500; color:var(--primary-color); }
+
+/* ======================================================
+   8) PRODUCT DETAILS
+   ====================================================== */
+#ProductsDetails .productdetailsboximage img{ width:90%; height:430px; margin:0 auto; display:block; border-radius:20px; }
+#ProductsDetails .productdetailsbox h3.productname{ font-size:32px !important; }
+#ProductsDetails .productdetailsbox h4{ font-size:20px; font-weight:600; }
+#ProductsDetails .productdetailsbox p.productdescription{ font-size:20px; padding:10px 0; }
+#ProductsDetails .productdetailsbox span.productprice{ display:block; font-size:28px; font-weight:600; color:var(--primary-color); margin:10px 0; }
+#ProductsDetails .productdetailsbox span.category{ font-size:18px; font-weight:500; }
+
+/* Owner details */
+.ownerdetails .ownerinfo{ padding:17px 0; display:flex; gap:20px; }
+.ownerdetails .ownerinfo span{ display:flex; align-items:center; gap:6px; font-size:18px; }
+.ownerdetails .ownerinfo span i{ font-size:23px; color:var(--primary-color); line-height:1; }
+
+/* ======================================================
+   9) MY PRODUCTS LIST
+   ====================================================== */
+#MyProductsContainer .myproductbox{ padding:10px; }
+#MyProductsContainer .myproductbox img{ width:210px; height:190px; border-radius:12px; object-fit:cover; }
+#MyProductsContainer .myproductboxcontentinner{ padding:15px; border:3px solid #ccc; border-radius:19px; display:flex; gap:20px; align-items:center; position:relative; }
+#MyProductsContainer .myproductbox h3.productname{ font-size:24px !important; margin-top:10px; }
+#MyProductsContainer .myproductbox span.productprice{ font-size:24px; font-weight:600; color:var(--primary-color); display:block; margin:5px 0; }
+#MyProductsContainer .myproductbox .myproductboxbuttons.d-flex{ position:absolute; top:20px; right:20px; gap:15px; }
+#MyProductsContainer .myproductbox button.btn.action-btn{ padding:0; width:46px; height:45px; background:var(--primary-color); border-radius:30px; color:#fff; outline:5px solid rgba(241,102,34,0.49); }
+#MyProductsContainer .myproductbox p.productdescription{ font-size:13px; }
+
+/* ======================================================
+   10) ADD PRODUCT / FORMS
+   ====================================================== */
+.MyProductsDetailsform{ padding:20px; max-width:1100px; width:100%; }
+.topbarwithbtn h3, backBtn h3{font-size: 24px !important;font-weight:600 !important;color:#333 !important;display:flex;align-items:center;gap:8px;margin-bottom: 20px;}
+.form-groupfield{ margin-bottom:20px; }
+.form-label{ font-weight:500; color:#444; margin-bottom:8px; display:block; }
+.form-control, select.form-control{ border:1px solid #ddd; border-radius:10px; padding:12px 14px; width:100%; font-size:15px; background:#fafafa; transition:all .2s ease; }
+.form-control:focus{ border-color:var(--primary-color); box-shadow:0 0 6px var(--primary-color); background:#fff; outline:none; }
+
+/* Upload box */
+.upload-box{ border:2px dashed #d1d1d1; border-radius:12px; background:#fafafa; width:100%; height:180px; position:relative; cursor:pointer; display:flex; justify-content:center; align-items:center; overflow:hidden; transition:all .3s ease; }
+.upload-box:hover{ border-color:var(--primary-color); background:#f166222e; }
+.upload-box input[type="file"]{ opacity:0; position:absolute; width:100%; height:100%; cursor:pointer; }
+.upload-content{ text-align:center; color:#777; pointer-events:none; }
+.upload-content i{ font-size:36px; color:#999; margin-bottom:8px; }
+.upload-content p{ margin:0; font-size:14px; }
+.upload-box img{ width:100%; height:100%; object-fit:contain; border-radius:12px; display:none; padding:10px; }
+
+#newProductButton{ position:fixed; background:var(--primary-color); width:70px; height:70px; border-radius:100px; color:#fff; z-index:11; box-shadow:0 0 13px 2px var(--primary-color); bottom:60px; right:60px; border:4px solid #fff; text-align:center; }
+#newProductButton i{ font-size:30px; line-height:60px; }
+
+/* ======================================================
+   11) USER PROFILE
+   ====================================================== */
+#userinfobox .detialmy{display:flex;flex-direction:column;gap:3px;padding:10px 0;font-size: 14px;}
+#userinfobox h3.username{font-size: 29px !important;}
+#userinfobox .userimagebox img{ width:90%; }
+#userinfobox button#editprofilebtn{padding: 11px 10px;font-size: 18px;margin-bottom:14px;width:100%;}
+#userinfobox a{margin-right:20px;text-decoration:underline !important;font-size: 13px;}
+
+/* ======================================================
+   12) AFFILIATE
+   ====================================================== */
+#affiliatepage .topbarwithbtn{ padding-bottom:10px; margin-bottom:20px; }
+#affiliatepage .topbarwithbtn h3{ margin:0; font-weight:600; font-size:1.4rem; color:var(--accent-color); }
+#affiliatepage .referral-container{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+#affiliatepage .total-earnings{ border:2px solid var(--accent-color); color:var(--accent-color); font-weight:700; padding:8px 18px; border-radius:15px; min-width:160px; text-align:center; font-size:21px; }
+#affiliatepage .referral-code-box{display:flex;border:2px solid var(--accent-color);border-radius:125px;padding:7px;max-width:330px;flex-grow:1;justify-content: space-between;}
+#affiliatepage .referral-code{ color:var(--accent-color); font-weight:700; font-size:25px; display:flex; align-items:center; }
+#affiliatepage .copy-btn{ background:var(--accent-color); color:#fff; padding:14px 30px; border-radius:45px; border:none; font-weight:600; }
+#affiliatepage .copy-btn:hover{ background:#d0541b; }
+#affiliatepage .earning-item{display:flex;align-items:center;padding:15px;border:1px solid #fae4e4;border-radius:10px;margin-bottom:12px;width: 100%;flex-wrap: wrap;}
+#affiliatepage .avatar img{ width:65px; height:65px; border-radius:50%; overflow:hidden; margin-right:15px; background:#ccc; }
+#affiliatepage .earning-amount{ background:var(--accent-color); color:#fff; padding:9px 15px; border-radius:25px 0 0 25px; font-weight:700; }
+#affiliatepage .earning-item p.earning-name {font-weight: 700;font-size: 16px;margin: 0;}
+#affiliatepage .earning-item p.earning-desc {margin: 0;font-size: 12px;}
+/* ======================================================
+   13) NOTIFICATIONS
+   ====================================================== */
+#notificationPage .filter-container{ width:100%; margin:20px 0 30px; }
+#notificationPage .topbarwithbtn{ display:flex; flex-direction:column; align-items:flex-start; gap:17px; margin-bottom:15px; }
+#notificationPage .topbarwithbtn h3{ font-weight:600; font-size:1.4rem; color:var(--accent-color); margin:0; }
+#notificationPage .filter-container select{ padding:14px 20px; border-radius:11px; font-size:20px; box-shadow:0 0 9px #ccc; border:3px solid #ccc !important; }
+#notificationPage .notifications-list{ overflow-y:auto; padding-right:5px; }
+
+.notification-item{ background:#fff; border:1.5px solid #eee; border-radius:18px; padding:20px 20px 20px 80px; margin-bottom:15px; box-shadow:0 0 5px rgba(0,0,0,.03); position:relative; transition:transform .3s ease; }
+.notificationbox-icon{ position:absolute; left:15px; top:20px; width:50px; height:50px; border-radius:50%; background:var(--accent-color); color:#fff; display:flex; align-items:center; justify-content:center; font-size:25px; }
+.notificationbox-icon.info{ background:var(--primary-color); }
+.notification-title{ font-weight:600; margin:0 0 6px; font-size:17px; }
+.notification-desc{ font-size:16px; margin:7px 0; }
+.notification-timestamp{ font-size:11px; color:#000; }
+.notification-delete{ position:absolute; top:0; right:0; background:#f23a3a; height:100%; width:80px; color:#fff; font-size:40px; display:flex; align-items:center; justify-content:center; border-radius:0 8px 8px 0; visibility:hidden; opacity:0; pointer-events:none; transition:background-color .3s ease; }
+.notification-item.show-delete .notification-delete{ visibility:visible; opacity:1; pointer-events:auto; }
+
+/* ======================================================
+   14) BOOKING / LIST & DETAILS
+   ====================================================== */
+#bookingPage{ padding:15px; font-family:"Poppins",sans-serif; }
+#bookingPage input[type="search"]{width:100%;padding:15px 25px;border-radius:12px;border:1.5px solid #eee;background:#f8f8f8;margin-bottom: 20px;font-size:18px;}
+#bookingPage input[type="search"]:focus{ border-color:var(--accent-color); }
+#bookingPage .booking-item{display:flex;justify-content:space-between;align-items:center;border:1.5px solid #eee;border-radius:14px;padding: 14px 17px;margin-bottom:15px;background:#fff;transition:all .2s ease;}
+#bookingPage .booking-item:hover{ box-shadow:0 4px 10px rgba(0,0,0,.06); transform:translateY(-2px); }
+#bookingPage .booking-left{ max-width:75%; }
+#bookingPage .booking-date{ font-size:.85rem; color:#888; margin-bottom:5px; }
+#bookingPage .booking-id{ font-weight:700; color:#222; font-size:1.2rem; }
+#bookingPage .booking-right{ text-align:right; min-width:90px; color:#666; }
+#bookingPage .booking-status{ font-weight:600; text-transform:capitalize; }
+#bookingPage .booking-status.pending{ color:var(--accent-color); }
+#bookingPage .booking-status.completed{ color:#28a745; }
+#bookingPage .booking-status.assigned{ color:#007bff; }
+#bookingPage .booking-price{ font-weight:700; color:var(--accent-color); font-size:1.1rem; }
+#bookingPage .detail-box{ border:1.5px solid #eee; padding:15px 18px; border-radius:14px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.05); margin-bottom:15px; }
+#bookingPage .back-btn{ background:none; border:none; color:var(--accent-color); font-weight:600; display:flex; gap:5px; align-items:center; cursor:pointer; }
+
+@keyframes fadeIn{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+
+/* ======================================================
+   15) SERVICES PROVIDER DETAILS
+   ====================================================== */
+.profile-tags{ display:flex; gap:10px; padding:20px 0; }
+.profile-tags .tag{ background:transparent; border:2px solid var(--primary-color); padding:10px 20px; border-radius:14px; font-weight:800; color:var(--primary-color); min-width:fit-content; }
+.profile-tags .tag span{ font-weight:400; color:#000; }
+.profile-header{ display:flex; gap:30px; padding:20px 0; align-items:center; }
+.profile-header span.status{ font-weight:500; font-size:18px; }
+.profile-header span.status.active{ color:var(--primary-color); }
+.buttons{ display:flex; gap:10px; flex-wrap:wrap; padding:30px 0; justify-content:space-between; }
+.buttons button{ background:var(--primary-color); padding:16px 20px; border-radius:11px; color:#fff; border:2px solid var(--primary-color); font-size:20px; }
+.buttons button:hover{ background:transparent; color:var(--primary-color); box-shadow:0 0 10px var(--primary-color); }
+.provider-servicedetails-img img{ max-width:600px; width:100%; }
+
+/* ======================================================
+   16) SERVICES SELECTION / PAYMENT OPTIONS
+   ====================================================== */
+#ServicesSelectionPage .service-wrapper{ display:flex; flex-wrap:wrap; gap:30px; max-width:750px; }
+#ServicesSelectionPage .service-section{ flex:1; min-width:280px; }
+.service-section h4{ color:var(--primary-color); font-size:18px; margin-bottom:20px; }
+#ServicesSelectionPage select{ width:100%; padding:14px 18px; border:2px solid #ddd; border-radius:12px; appearance:none; background:#fff; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23555' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 15px center; }
+#ServicesSelectionPage select:focus{ border-color:#ff6600; outline:none; }
+.payment-options{ display:flex; flex-direction:column; gap:12px; margin:20px 0; }
+.payment-options .payment-item{ display:flex; align-items:center; border-bottom:1px solid #eee; padding:10px 0 20px; }
+.payment-options input[type="radio"]{ appearance:none; width:18px; height:18px; border:2px solid #ccc; border-radius:50%; margin-right:10px; position:relative; }
+.payment-options input[type="radio"]:checked::after{ content:""; position:absolute; top:3px; left:3px; width:8px; height:8px; background:#ff6600; border-radius:50%; }
+.payment-options label{ font-size:20px; font-weight:500; }
+
+/* ======================================================
+   17) CHAT / MESSAGES
+   ====================================================== */
+#messagesPage .chat-wrapper{ display:flex; gap:15px; height:69vh; border-radius:12px; overflow:hidden; }
+#messagesPage .sidebar{ width:30%; background:var(--primary-color); padding:10px; border-radius:20px; display:flex; flex-direction:column; }
+#messagesPage .search-bar{ padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.67); color:#fff; margin:15px; }
+#messagesPage .contact-list{ overflow-y:auto; flex-grow:1; padding:0 10px 10px; display:flex; flex-direction:column; gap:7px; }
+#messagesPage .contact{ display:flex; align-items:center; padding:10px; border-radius:10px; gap:10px; color:#fff; background:linear-gradient(90deg,var(--primary-color),#ff854a); cursor:pointer; }
+#messagesPage .contact.active, #messagesPage .contact:hover{ background:#fff; color:var(--primary-color); border-radius:11px; }
+#messagesPage .contact img{ width:45px; height:45px; border-radius:50%; object-fit:cover; }
+#messagesPage .contact .info{ flex:1; display:flex; justify-content:space-between; align-items:center; }
+#messagesPage .chat-area{ width:70%; display:flex; flex-direction:column; background:var(--primary-color); border-radius:20px; }
+#messagesPage .messages{ flex-grow:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; }
+#messagesPage .msg{ max-width:75%; padding:10px 14px; border-radius:12px; }
+#messagesPage .msg.sent{ background:#fff; color:var(--primary-color); align-self:flex-end; }
+#messagesPage .msg.received{ background:#ffbd9c; align-self:flex-start; color:#000; }
+#messagesPage .input-area{ display:flex; gap:10px; padding:10px; border-top:1px solid rgba(255,255,255,.1); }
+#messagesPage .message-input{ flex:1; border:1px solid rgba(255,255,255,1); border-radius:8px; padding:10px 20px; background:transparent; color:#fff; }
+#messagesPage .send-btn{ background:#fff; color:var(--primary-color); border:none; border-radius:8px; padding:11px 16px; }
+@media (max-width:768px){ #messagesPage .chat-wrapper{ flex-direction:column; height:auto; } #messagesPage .sidebar, #messagesPage .chat-area{ width:100%; } }
+
+/* ======================================================
+   18) UTILS / SMALL COMPONENTS
+   ====================================================== */
+.text-muted{ color:#777; }
+.badge{ display:inline-block; padding:4px 8px; border-radius:8px; font-size:12px; }
+.hidden{ display:none !important; }
+.container{ max-width:1200px; margin:0 auto; padding:0 15px; }
+
+/* ======================================================
+   END OF FILE
+   - Duplicates removed, file reorganized by section.
+   - If you want a MINIFIED version or to change color variables,
+     tell me which variable to change.
+*/

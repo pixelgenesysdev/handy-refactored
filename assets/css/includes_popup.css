@@ -22,13 +22,13 @@ div#popup-box {
         flex-direction: row-reverse;
     }
     body #continueBtnpopup2.btn-primary.danger {
-        background: #8CC540 !important;
-        border: #8CC540 !important;
+        background: #000000 !important;
+        border: #000000 !important;
     }
 
     .btn-primary.half-btn {width: 50% !important;}
     body #continueBtnpopup.btn-primary, body #continueBtnpopup2.btn-primary {
-        background: black;
+        background: #f16622;
         width: 100%;
         padding: 11px 13px 9px;
         border-radius: 29px !important;

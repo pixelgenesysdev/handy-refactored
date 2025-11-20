@@ -56,9 +56,10 @@
   }
 
   .btn-modern:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px  var(--primary-color);
+      background-color: #ffffff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--primary-color);
+      color: var(--primary-color) !important;
   }
 
   .btn-modern:active {
