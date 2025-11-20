@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ezhandy web app</title>
+    <title>Ezhandy <?php echo isset($page_title) ? ' - ' . $page_title : ''; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>assets/css/auth_style.css">
     <link rel="icon" type="image/x-icon" href="<?php echo SITE_URL?>assets/images/favicon.png">
 
 

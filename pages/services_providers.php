@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
 $page_css = 'pages_services_providers.css';
  include '../includes/head.php'; ?>
 

@@ -1,8 +1,5 @@
 <?php
-echo "Form submitted!<br>";
-echo "Email: " . ($_POST['email'] ?? 'none') . "<br>";
-echo "Password: " . ($_POST['password'] ?? 'none');
-die();
+
 
 session_start();
 

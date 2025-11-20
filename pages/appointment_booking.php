@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
 $page_css = 'pages_appointment_booking.css';
 $page_js = 'pages_appointment_booking.js';
  include '../includes/head.php'; ?>

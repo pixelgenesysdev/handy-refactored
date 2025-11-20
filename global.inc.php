@@ -1,9 +1,5 @@
 
 <?php
-
-session_start();;
-
-
 // Load environment variables from config.env
 $envFile = __DIR__ . '/config.env';
 if (file_exists($envFile)) {

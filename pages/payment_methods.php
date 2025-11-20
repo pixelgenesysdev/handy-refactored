@@ -1,4 +1,10 @@
-<?php include '../includes/head.php'; ?>
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+ include '../includes/head.php'; ?>
 
 <div id="paymentmethodPage" class="provider-profile">
 
