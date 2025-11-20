@@ -1,12 +1,19 @@
 <?php
+echo "Form submitted!<br>";
+echo "Email: " . ($_POST['email'] ?? 'none') . "<br>";
+echo "Password: " . ($_POST['password'] ?? 'none');
+die();
+
 session_start();
 
-// Fake login – database nahi hai abhi
-$email = $_POST['email'] ?? '';
-$pass  = $_POST['password'] ?? '';
+// Debug line (temporary) — baad mein hata dena
+// echo "<pre>"; print_r($_POST); die();
 
-// Ye emails se login hoga – password sabka 123
-$valid_users = [
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+
+// Fake users — password sabka "123"
+$users = [
     "user@gmail.com"     => "user",
     "provider@gmail.com" => "provider",
     "customer@gmail.com" => "user",
@@ -15,16 +22,17 @@ $valid_users = [
     "pro@gmail.com"      => "provider"
 ];
 
-if (isset($valid_users[$email]) && $pass === "123") {
-    $_SESSION['user_id']    = 999;
-    $_SESSION['user_name']  = explode("@", $email)[0];
+if (isset($users[$email]) && $password === "123") {
+    $_SESSION['user_id'] = 999;
+    $_SESSION['user_name'] = ucfirst(explode("@", $email)[0]);
     $_SESSION['user_email'] = $email;
-    $_SESSION['user_type']  = $valid_users[$email];  // ← ROLE SET
+    $_SESSION['user_type'] = $users[$email];
 
+    // Success — dashboard pe bhejo
     header("Location: ../pages/dashboard.php");
     exit();
 } else {
-    $_SESSION['login_error'] = "Wrong email or password!";
+    $_SESSION['error'] = "Wrong email or password! Try: provider@gmail.com / 123";
     header("Location: login.php");
     exit();
 }
