@@ -28,9 +28,9 @@ if (isset($fake_users[$email]) && $fake_users[$email]['pass'] === $password) {
 
     // Role ke hisaab se redirect
     if ($fake_users[$email]['role'] === 'admin') {
-        $redirect = '../pages/admin-dashboard.php';
+        $redirect = '../pages/dashboard.php';
     } elseif ($fake_users[$email]['role'] === 'provider') {
-        $redirect = '../pages/provider-dashboard.php';
+        $redirect = '../pages/dashboard.php';
     } else {
         $redirect = '../pages/dashboard.php';
     }

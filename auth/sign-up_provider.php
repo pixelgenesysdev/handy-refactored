@@ -16,7 +16,7 @@
                     <label for="username">Full Name*</label>
                     <div class="input-wrapper">
                         <i class="fa-regular fa-user"></i>
-                        <input type="text" id="username" required placeholder="Enter Username">
+                        <input type="text" id="username" required placeholder="Enter Full Name">
                     </div>
                 </div>
 

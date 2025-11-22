@@ -53,6 +53,10 @@ include '../includes/head.php';
             </div>
         </div>
 
+        <style>
+            .contentbox p { font-size: 15px !important; }
+            .service-item { cursor: pointer; transition: transform 0.3s ease; } 
+        </style>
 
 
     </div>
@@ -125,7 +129,3 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
-<style>
-.contentbox p { font-size: 15px !important; }
-.service-item { cursor: pointer; transition: transform 0.3s ease; } 
-</style>
