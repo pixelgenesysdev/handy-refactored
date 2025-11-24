@@ -1,17 +1,13 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
-
 $page_js = 'pages_alljobs.js';
 
 $page_css = 'page_alljobs.css';
 
 include '../includes/head.php';
+include '../includes/providerpage.php';
 ?>
+
+
 
 <!-- Add jsPDF for PDF generation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

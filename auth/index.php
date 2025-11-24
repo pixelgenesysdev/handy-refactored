@@ -1,7 +1,7 @@
 <?php
+
 $page_js = 'auth_indextest.js';
  include 'includes/header.php'; ?>
-
 
 
 <div class="col-md-6 firstcol align-items-center d-flex p-0 text-center justify-content-center">

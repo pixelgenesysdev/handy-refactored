@@ -61,32 +61,32 @@ error_reporting(E_ALL);
 
 
 <script>
-    // Jab form submit ho
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    // // Jab form submit ho
+    // document.getElementById('loginForm').addEventListener('submit', function(e) {
+    //     e.preventDefault();
         
-        const email    = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    //     const email    = document.getElementById('email').value;
+    //     const password = document.getElementById('password').value;
 
-        fetch('../api/login.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                localStorage.setItem('handyUser', JSON.stringify(data.user)); // fake session
-                window.location.href = data.redirect;
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            alert('Server error!');
-        });
-    });
+    //     fetch('../api/login.php', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ email, password })
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if (data.success) {
+    //             alert(data.message);
+    //             localStorage.setItem('handyUser', JSON.stringify(data.user)); // fake session
+    //             window.location.href = data.redirect;
+    //         } else {
+    //             alert(data.message);
+    //         }
+    //     })
+    //     .catch(err => {
+    //         console.error(err);
+    //         alert('Server error!');
+    //     });
+    // });
 </script>
     <?php include 'includes/footer.php'; ?>

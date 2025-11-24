@@ -1,3 +1,5 @@
+const loginUser = JSON.parse(localStorage.getItem("handyUser"));
+
 const servicestype = [
     {id:1,name:'Cleaning',image:'cleaning_service_image.webp',discription:'Cleaning discription lorem ipsum dolor sit amet consectetur adipiscing elit',iconpath:'servicesiconbox.png'},
     {id:2,name:'Electrician',image:'electric_service_image.webp',discription:'Electrician discription lorem ipsum dolor sit amet consectetur adipiscing elit',iconpath:'servicesiconbox1.png'},

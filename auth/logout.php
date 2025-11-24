@@ -1,6 +1,5 @@
-<?php
-session_start();
-session_destroy();
-header("Location: login.php?msg=Logged out successfully!");
-exit();
-?>
+<script>
+localStorage.removeItem('handyUser');
+window.location.href = "../auth/login.php";
+
+</script>

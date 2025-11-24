@@ -1,12 +1,11 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
 
 $page_js = 'pages_user_setting.js';
- include '../includes/head.php'; ?>
+ include '../includes/head.php'; 
+ include '../includes/bothpage.php';
+?>
+
+
 
 
 <div id="pagebox">

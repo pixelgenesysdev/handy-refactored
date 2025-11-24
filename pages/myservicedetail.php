@@ -1,12 +1,7 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
 $page_js = 'pages_myservices.js';
 include '../includes/head.php';
+include '../includes/providerpage.php';
 ?>
 
 <div class="topbarwithbtn">

@@ -1,18 +1,5 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-else
-{
-    header("Location: ../pages/dashboard.php");
-    exit();
-}
-$user_name = $_SESSION['user_name'];
-$user_role = $_SESSION['user_role'];
-?>
+<script>
+    window.location.href = "../pages/dashboard.php";
+    
 
-
-
-<!-- redirect to => dashboard -->
+</script>

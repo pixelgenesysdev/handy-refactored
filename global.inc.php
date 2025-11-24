@@ -40,4 +40,5 @@ define('BASE_API_URL', $base_api_url);
   const SITE_URL = "<?php echo SITE_URL; ?>";
   const BASE_API_URL = "<?php echo BASE_API_URL; ?>";
 
+
 </script>

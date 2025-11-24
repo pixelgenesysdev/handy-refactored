@@ -36,7 +36,16 @@ if (isset($extra_head)) echo $extra_head;
 
 <script src="<?php echo SITE_URL; ?>/assets/loader/loader.js" defer></script>
 
+<script>
+    if (localStorage.getItem('handyUser')) {
+        window.location.href = "../pages/dashboard.php";
+        console.log('logged in');
+    }
+    else {
+        console.log(' not logged in');
+    }
 
+</script>
 
 </head>
 

@@ -1,12 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
 $page_js = 'pages_affiliate.js';
- include '../includes/head.php'; ?>
+ include '../includes/head.php';
+ include '../includes/userspage.php'; ?>
+
+
 
 
 

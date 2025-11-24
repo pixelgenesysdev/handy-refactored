@@ -1,13 +1,10 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
 $page_css = 'pages_reviews.css';
 $page_js = 'pages_reviews.js';
- include '../includes/head.php'; ?>
+ include '../includes/head.php'; 
+include '../includes/bothpage.php';
+?>
+
 
 <div id="reviewsPage">
     <div class="topbarwithbtn" class="withbackbutton">

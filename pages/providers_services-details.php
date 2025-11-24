@@ -1,11 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
 
-include '../includes/head.php'; ?>
+include '../includes/head.php'; 
+include '../includes/bothpage.php'; ?> 
+
 
 <div id="ServicesUserdetailsPage" class="provider-profile">
 
@@ -44,22 +41,18 @@ include '../includes/head.php'; ?>
                 </p>
             </div>
 
-            <div class="profile-tags">
-                <div class="tag">$10.00<br><span>Visit Charges</span></div>
-                <div class="tag">$05.00<br><span>Hourly rate</span></div>
-            </div>
-            <div class="buttons">
+            <div id="bookNowbtn" class="buttons">
                 <span>A minimum of 2 hours of service booking is mandatory.</span>
                 <button class="btn primary" onclick="showPopup(
-          'Are you sure you want to book the Quick Service?',
-          'logout',
-          '',
-          'Yes',
-                () => { window.location.href = '<?php echo SITE_URL; ?>pages/appointment_booking.php'; });" >Book Now</button>
+                        'Are you sure you want to book the Quick Service?',
+                        'logout',
+                        '',
+                        'Yes',
+                                () => { window.location.href = '<?php echo SITE_URL; ?>pages/appointment_booking.php'; });" >Book Now
+                </button>
             </div>
             
         </div>
-
 
 
     </div>
@@ -67,6 +60,13 @@ include '../includes/head.php'; ?>
 </div>
 
 
+<script>
+    const bookNowbtn = document.getElementById('bookNowbtn');
+
+    if (loginUser.role === 'provider') {
+       bookNowbtn.style.display = 'none';
+    }
+</script>
 
 
 <?php include '../includes/footer.php'; ?>

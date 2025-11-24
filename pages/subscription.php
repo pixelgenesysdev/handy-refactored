@@ -1,17 +1,13 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
 $page_js = 'pages_services.js';
- include '../includes/head.php'; ?>
+ include '../includes/head.php';
+  include '../includes/providerpage.php';
+?>
 
 <div id="subscriptionPage">
 
 
-    <div id="planpagecontent">
+    <div id="planpagecontent" style="display: none;">
         <div class="topbarwithbtn" class="withbackbutton">
             <h3 style="cursor: pointer;">Subscription Plan</h3>
         </div>
@@ -72,7 +68,7 @@ $page_js = 'pages_services.js';
         <div class="subscription-section">
             <div class="topheadingbtn">
                 <h4>Current Subscription</h4>
-                <button class="cancel-btn">Cancel Subscription</button>
+                <button id="cancel-btn" class="cancel-btn">Cancel Subscription</button>
             </div>
             <div class="subscription-box">
             <div class="subscription-item">
@@ -148,6 +144,23 @@ $page_js = 'pages_services.js';
         // Redirect to plan details page
         window.location.href = "payment_methods.php";
         }
+
+        const planpagelogs = document.getElementById('planpagelogs');
+        const planpagecontent = document.getElementById('planpagecontent');
+        const cancelbtn = document.getElementById('cancel-btn');
+        cancelbtn.addEventListener('click', () => {
+           showPopup( 
+            'Are you sure you want to cancel your subscription?',
+            'delete',
+            'Cancel Subscription',
+            'Yes',
+            () => {
+               planpagelogs.style.display = 'none';
+               planpagecontent.style.display = 'block';
+            }
+           );
+        });
+
 </script>
 
 <style>
