@@ -1,4 +1,5 @@
 <?php
+$page_css = 'pages_myservices.css';
 $page_js = 'pages_myservices.js';
 include '../includes/head.php';
 include '../includes/providerpage.php';
@@ -13,11 +14,7 @@ include '../includes/providerpage.php';
 <!-- OUTER WRAPPER -->
 <div id="myServiceDetail">
 
-    <!-- EDIT / SAVE BUTTON -->
-    <div style="display:flex; gap:10px; margin-bottom:16px;">
-        <button id="editBtn" class="primary-btn">Edit</button>
-        <button id="saveBtn" class="primary-btn" style="display:none;">Save</button>
-    </div> 
+
 
     <!-- SEARCH SETTING -->
     <div class="section-box flex-between">
@@ -105,6 +102,12 @@ include '../includes/providerpage.php';
             <span class="toggle-slider"></span>
         </label>
     </div>
+
+    <!-- EDIT / SAVE BUTTON -->
+    <div style="display:flex; gap:10px; margin-bottom:16px;">
+        <button id="editBtn" class="primary-btn">Edit</button>
+        <button id="saveBtn" class="primary-btn" style="display:none;">Save</button>
+    </div> 
 
 </div>
 
@@ -223,216 +226,5 @@ include '../includes/providerpage.php';
 
 </script>
 
-<style>
-    /* RESPONSIVE STYLING */
-    #myServiceDetail {
-        font-family: Inter, sans-serif;
-        color: #222;
-        padding: 20px;
-        max-width: 100%;
-        width: 100%;
-        min-width: 300px;
-    }
-
-    .primary-btn {
-        width: 100%;
-        padding: 14px;
-        border-radius: 8px;
-        background: #fa7026;
-        color: #fff;
-        font-weight: 700;
-        border: none;
-        cursor: pointer;
-        margin: 10px 0;
-    }
-
-    .section-box {
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-    }
-
-    .flex-between {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .desc {
-        width: 85%;
-    }
-
-    .input-label {
-        font-weight: 600;
-        margin: 30px 0px 7px;
-        display: block;
-    }
-
-    #myServiceDetail textarea, #myServiceDetail input[type="text"], #myServiceDetail input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-        background-color: #fff;
-        color: #222;
-        transition: background-color 0.3s;
-    }
-
-    /* Disable inputs have a subtle grey background */
-    #myServiceDetail input:disabled, #myServiceDetail textarea:disabled {
-        background-color: #f9f9f9;
-        color: #777;
-        cursor: not-allowed;
-    }
-
-    .toggle-switch {
-        position: relative;
-        width: 42px;
-        height: 22px;
-    }
-
-    .toggle-switch input {
-        opacity: 0;
-        width: 0;
-    }
-
-    .toggle-slider {
-        position: absolute;
-        inset: 0;
-        border-radius: 20px;
-        background: #ccc;
-        transition: 0.3s;
-    }
-
-    .toggle-slider::before {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 2px;
-        top: 2px;
-        border-radius: 50%;
-        background: white;
-        transition: 0.3s;
-    }
-
-    input:checked + .toggle-slider {
-        background: #fa7026;
-    }
-
-    input:checked + .toggle-slider::before {
-        transform: translateX(20px);
-    }
-
-    .charges-grid {
-        display: grid;
-        grid-template-columns: 120px 70px;
-        gap: 4px;
-        margin-top: 8px;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .charges-grid .value {
-        color: #fa7026;
-        font-weight: 700;
-        width: 70px !important;
-        padding: 8px 6px !important;
-        text-align: center;
-        border-radius: 8px;
-    }
-
-    .upload-wrapper {
-        position: relative;
-    }
-
-    .upload-icon {
-        width: 20px;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        fill: #fa7026;
-        pointer-events: none;
-    }
-
-    .preview-images {
-        display: flex;
-        gap: 10px;
-        margin-top: 12px;
-        flex-wrap: wrap;
-    }
-
-    .preview-images img {
-        width: auto;
-        height: 170px;
-        border-radius: 6px;
-        object-fit: cover;
-    }
-
-    .calendar-header {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-    }
-
-    .nav-btn {
-        border: 1px solid #fa7026;
-        color: #fa7026;
-        background: none;
-        border-radius: 6px;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-    }
-
-    .nav-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-
-    .day-names, .days {
-        display: grid;
-        grid-template-columns: repeat(7,1fr);
-        text-align: center;
-        gap: 6px;
-    }
-
-    .days span {
-        padding: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    .days span.selected {
-        background: #fa7026;
-        color: #fff;
-    }
-
-    .days span.outside {
-        color: #aaa;
-        pointer-events: none;
-    }
-
-    @media(max-width: 480px) {
-        .flex-between {
-            flex-direction:column;
-            align-items: flex-start;
-        }
-    }
-
-       .calendar-container {
-        margin: 30px 0px;
-        max-width: 510px;
-        min-width: 300px;
-        width: 100%;
-    }
-</style>
 
 

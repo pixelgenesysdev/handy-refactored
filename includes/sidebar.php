@@ -16,8 +16,11 @@
     <a id="nav-btn" data-auth="yes" data-role="customer" class="btn-sidebar side-menu <?php echo ($currentPage == 'dashboard.php' || $currentPage == 'services.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers_details.php' || $currentPage == 'providers_services-details.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'provider_dashboard.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/provider_dashboard.php">
+      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
+    </a>
 
-    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'myservices.php' || $currentPage == 'new_service.php' || $currentPage == 'myservicedetail.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/myservices"> 
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'myservices.php' || $currentPage == 'new_service.php' || $currentPage == 'create-service.php' || $currentPage == 'providers_services-details.php'|| $currentPage == 'edit-service.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/myservices"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>My Services</span>
     </a>
 
@@ -30,11 +33,17 @@
     <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'transactionhistory.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/transactionhistory.php">
        <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/transaction.png" alt="Transaction" /><span>Transaction History</span>
     </a>
-    <a id="nav-btn" data-auth="yes" data-role="customer" class="btn-sidebar side-menu <?php echo ($currentPage == 'affiliate.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/affiliate">
+    <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'affiliate.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/affiliate">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/affiliate.png" alt="Affiliate" /><span>Affiliate Earning</span>
     </a>
     <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'alljobs.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/alljobs">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/history.png" alt="VoteNow" /><span>All Jobs</span>
+    </a>
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'bankdetails.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/bankdetails">
+      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/history.png" alt="VoteNow" /><span>Bank Details</span>
+    </a>
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'payment_logs.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/payment_logs">
+      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/history.png" alt="VoteNow" /><span>Payment Logs</span>
     </a>
      <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'subscription.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/subscription">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/history.png" alt="subscription" /><span>Subscription</span>

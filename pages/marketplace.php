@@ -10,32 +10,34 @@ $page_js = 'pages_marketplace.js';
     <!-- Top Bar with Tabs -->
 
     <div id="topbarwithbtn" class="topbarwithbtn withbackbutton d-flex justify-content-between align-items-center">
-        <h3 class="tabtitle">Market place</h3>
+        <h3 class="tabtitle">Market Space</h3>
         <div id="marketproducttabs">
             <button class="marketproducttabbtn active" data-tab="AllProducts">Products</button>
             <button class="marketproducttabbtn" data-tab="MyProducts">My Products</button>
         </div>
     </div>
 
-      <input type="search" id="searchInput" placeholder="Search Here" />
+      
 
     <!-- Marketplace Tab Content -->
 
     <div id="marketproducttabscontent">
 
         <div class="marketproducttabcontent" id="AllProducts">
+            <input type="search" id="searchInput" placeholder="Search Here" />
             <div class="inner d-flex flex-wrap col-12" id="AllProductsContainer">
 
             </div>
         </div>
 
         <div class="marketproducttabcontent d-none" id="MyProducts">
+            
              <div id="newProductButton"><i class="fa-solid fa-plus"></i></div>
             <div class="inner d-flex flex-wrap col-12" id="MyProductsContainer">
                 <div class="myproductbox col-12 col-md-12 col-lg-6 mb-6">
                     <div class="myproductboxcontentinner">
                         <div class="myproductboximage">
-                            <img src="<?php echo SITE_URL; ?>assets/images/productimage.png" width="100%" alt="Product Image">
+                            <img src="<?php echo SITE_URL; ?>assets/images/services-images/hands-wall-repair.webp" width="100%" alt="Product Image">
                         </div>
                         <div class="myproductboxcontent">
                         
@@ -136,8 +138,9 @@ $page_js = 'pages_marketplace.js';
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Add</button>
+           
             </form>
+             <button type="submit" id="MyProductsDetailsbtn" class="btn btn-primary">Add</button>
         </div>
     </div>
 

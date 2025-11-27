@@ -9,6 +9,7 @@ $page_js = 'pages_services.js';
         <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>List Of Services</h3>
     </div>
 
+    <input type="search" id="searchInput" placeholder="Search Here" />
 
     <div id="ServicesLists" class="col-12 d-flex flex-wrap">
         <!-- ServicesLists will be dynamically inserted here -->

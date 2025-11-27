@@ -11,8 +11,8 @@ $page_js = 'pages_messages.js';
 <div id="messagesPage">
 
     <div class="topbarwithbtn withbackbutton">
-        <h3 onclick="history.back()" style="cursor: pointer;">
-            <i class="fa-solid fa-arrow-left"></i> Messages
+        <h3 onclick="">
+           Messages
         </h3>
     </div>
 

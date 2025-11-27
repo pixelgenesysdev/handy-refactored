@@ -8,11 +8,11 @@ $page_css = 'pages_services_providers.css';
 <div id="ServicesUsersPage">
 
     <div class="topbarwithbtn">
-        <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>Services Users</h3>
+        <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>Title Name</h3>
     </div>
 
     <div class="search-container">
-        <input type="text" placeholder="Search User" id="searchUser">
+        <input type="text" placeholder="Search Here" id="searchUser">
     </div>
 
     <div class="card-grid">

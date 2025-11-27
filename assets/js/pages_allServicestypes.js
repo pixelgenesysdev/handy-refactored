@@ -39,6 +39,6 @@
             showPopup('Please select a service type', 'error', 'Error', 'OK');
         }
         else {
-            window.location.href = `myservicedetail.php?serviceid=${selectedServiceId}`;
+            window.location.href = `create-service.php?serviceid=${selectedServiceId}`;
         }
     });

@@ -115,58 +115,60 @@ const bookingData = [
 
     // Render booking list
     function renderBookings(filter = '') {
-    bookingListEl.innerHTML = '';
-    const filteredBookings = bookingData.filter(b =>
-        b.id.includes(filter) || b.user.toLowerCase().includes(filter.toLowerCase())
-    );
+        bookingListEl.innerHTML = '';
+        const filteredBookings = bookingData.filter(b =>
+            b.id.includes(filter) || b.user.toLowerCase().includes(filter.toLowerCase())
+        );
 
-    filteredBookings.forEach(booking => {
-        const item = document.createElement('div');
-        item.className = 'booking-item';
-        item.innerHTML = `
-        <div class="booking-left">
-            <div class="booking-date">${booking.date}</div>
-            <div class="booking-id">Booking ID: <strong>#${booking.id}</strong></div>
-        </div>
-        <div class="booking-right">
-            <div class="booking-price">$${booking.price}</div>
-        </div>
-        `;
-        item.addEventListener('click', () => showBookingDetail(booking));
-        bookingListEl.appendChild(item);
-    });
+        filteredBookings.forEach(booking => {
+            const item = document.createElement('div');
+            item.className = 'booking-item';
+            item.innerHTML = `
+            <div class="booking-left">
+                <div class="booking-date">${booking.date}</div>
+                <div class="booking-id">Referal Username: <strong>#${booking.id}</strong></div>
+            </div>
+            <div class="booking-right">
+                <div class="booking-price">$${booking.price}</div>
+            </div>
+            `;
+            // item.addEventListener('click', () => showBookingDetail(booking));
+            bookingListEl.appendChild(item);
+        });
     }
 
     // Show booking detail
-    function showBookingDetail(booking) {
-    bookingListEl.classList.add('hidden');
-    searchInputEl.classList.add('hidden');
-    bookingDetailEl.classList.remove('hidden');
+    // function showBookingDetail(booking) {
+    //     bookingListEl.classList.add('hidden');
+    //     searchInputEl.classList.add('hidden');
+    //     bookingDetailEl.classList.remove('hidden');
 
-    document.getElementById('detailId').textContent = `#${booking.id}`;
-    document.getElementById('detailService').textContent = booking.service;
-    document.getElementById('detailCharges').textContent = `$${booking.price}`;
-    document.getElementById('detailRate').textContent = `$${booking.hourlyRate}`;
-    document.getElementById('detailUser').textContent = booking.user;
-    document.getElementById('detailPhone').textContent = booking.phone;
-    document.getElementById('detailEmail').textContent = booking.email;
-    document.getElementById('detailAddress').textContent = booking.address;
-    document.getElementById('detailServiceDate').textContent = booking.serviceDate;
-    document.getElementById('detailServiceTime').textContent = booking.serviceTime;
-    document.getElementById('detailDate').textContent = booking.date;
-    }
+    //     document.getElementById('detailId').textContent = `#${booking.id}`;
+    //     document.getElementById('detailService').textContent = booking.service;
+    //     document.getElementById('detailCharges').textContent = `$${booking.price}`;
+    //     document.getElementById('detailRate').textContent = `$${booking.hourlyRate}`;
+    //     document.getElementById('detailUser').textContent = booking.user;
+    //     document.getElementById('detailPhone').textContent = booking.phone;
+    //     document.getElementById('detailEmail').textContent = booking.email;
+    //     document.getElementById('detailAddress').textContent = booking.address;
+    //     document.getElementById('detailServiceDate').textContent = booking.serviceDate;
+    //     document.getElementById('detailServiceTime').textContent = booking.serviceTime;
+    //     document.getElementById('detailDate').textContent = booking.date;
+    // }
 
     // Back to list view
-    backBtn.addEventListener('click', () => {
-    bookingDetailEl.classList.add('hidden');
-    bookingListEl.classList.remove('hidden');
-    searchInputEl.classList.remove('hidden');
-    });
+    // backBtn.addEventListener('click', () => {
+    //     bookingDetailEl.classList.add('hidden');
+    //     bookingListEl.classList.remove('hidden');
+    //     searchInputEl.classList.remove('hidden');
+    // });
 
     // Search functionality
-    searchInputEl.addEventListener('input', (e) => {
-    renderBookings(e.target.value.trim());
-    });
+    // searchInputEl.addEventListener('input', (e) => {
+    //     renderBookings(e.target.value.trim());
+    // });
 
     // Initial render
+
+
     renderBookings();

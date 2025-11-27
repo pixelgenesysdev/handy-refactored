@@ -49,14 +49,24 @@ $page_css = 'pages_contact.css';
         <div class="invalid-feedback">Please enter a message.</div>
       </div>
 
-      <!-- Submit -->
-      <div class="col-12 mt-4">
-        <button type="submit" name="submit" class="btn-modern btn btn-primary">Submit</button>
-      </div>
+
     </div>
   </form>
+        <!-- Submit -->
+      <div class="col-12 mt-4">
+        <button type="submit" id="contactformsubmit" name="submit" class="btn-modern btn btn-primary">Submit</button>
+      </div>
 
 </div>
+
+<script>
+  contactformsubmit.addEventListener('click', () => {
+    showPopup('Your message has been sent successfully!', 'success', '', 'OK' , () => {
+      window.location.reload(); 
+    });
+  })
+    
+</script>
 
 <?php include '../includes/footer.php'; ?>
 

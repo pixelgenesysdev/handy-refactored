@@ -7,7 +7,7 @@ const notificationsData = [
         title: "Lorem Ipsum Dolor",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting",
         timestamp: "29 Dec 2023 - 16:45 PM",
-        status: "showing"
+        status: "Read"
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ const notificationsData = [
         title: "Lorem Ipsum Dolor Sit Amet",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting",
         timestamp: "29 Dec 2023 - 16:45 PM",
-        status: "showing"
+        status: "Read"
     },
     {
         id: 3,
@@ -23,7 +23,7 @@ const notificationsData = [
         title: "Lorem Ipsum Dolor Sit Amet",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting",
         timestamp: "29 Dec 2023 - 16:45 PM",
-        status: "hidden"
+        status: "Unread"
     },
     {
         id: 4,
@@ -31,7 +31,7 @@ const notificationsData = [
         title: "Lorem Ipsum Dolor",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting",
         timestamp: "29 Dec 2023 - 16:45 PM",
-        status: "showing"
+        status: "Read"
     },
     {
         id: 5,
@@ -39,7 +39,7 @@ const notificationsData = [
         title: "Lorem Ipsum Dolor Sit Amet",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting",
         timestamp: "29 Dec 2023 - 16:45 PM",
-        status: "showing"
+        status: "Read"
     }
     ];
 
@@ -71,23 +71,28 @@ const notificationsData = [
 
         // Toggle delete button visibility on click
         item.addEventListener('click', () => {
-        const currentlyShowing = item.classList.contains('show-delete');
+        const currentlyRead = item.classList.contains('show-delete');
         // Hide all other delete buttons
         document.querySelectorAll('.notification-item.show-delete').forEach(el => el.classList.remove('show-delete'));
         // Toggle this one
-        if (!currentlyShowing) item.classList.add('show-delete');
+        if (!currentlyRead) item.classList.add('show-delete');
         else item.classList.remove('show-delete');
         });
 
         // Delete notification on clicking trash icon
         item.querySelector('.notification-delete').addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent toggle
-        const id = notification.id;
-        const idx = notificationsData.findIndex(n => n.id === id);
-        if (idx > -1) {
-            notificationsData.splice(idx, 1);
-            renderNotifications(statusFilterEl.value);
-        }
+            showPopup('Are you sure you want to delete this notification?', 'delete', 'Delete Notification', 'Yes', 
+                () => {
+                    const id = notification.id;
+                    const idx = notificationsData.findIndex(n => n.id === id);
+                    if (idx > -1) {
+                        notificationsData.splice(idx, 1);
+                        renderNotifications(statusFilterEl.value);
+                    }
+                }
+            );
+            e.stopPropagation(); // prevent toggle
+            
         });
 
         notificationsListEl.appendChild(item);

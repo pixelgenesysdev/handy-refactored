@@ -46,8 +46,8 @@
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
-                                <input type="password" id="password"  class="toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                <input type="password" id="password"  class="toggle-password-input" required placeholder="Enter password">
+                                <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
-                                <input type="password" id="passwordConfirm"  class="toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                <input type="password" id="passwordConfirm"  class="toggle-password-input" required placeholder="Enter password">
+                                <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>

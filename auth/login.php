@@ -34,21 +34,21 @@ error_reporting(E_ALL);
                             <label for="password">Password</label>
                             <div class="input-wrapper" style="position: relative;">
                                 <i class="fa-solid fa-lock"></i>
-                                <input type="password" name="password" id="password" required placeholder="Enter password" style="width: 100%; padding-right: 40px; border: none; outline: none;">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color:#666;"></i>
+                                <input type="password" name="password" id="password" class="toggle-password-input" required placeholder="Enter password" style="width: 100%; padding-right: 40px; border: none; outline: none;">
+                                <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color:#666;"></i>
                             </div>
                         </div>
 
                         <div class="form-group d-flex align-items-center justify-content-between">
                             <div class="remember-me d-flex align-items-center gap-2">
                                 <input type="checkbox" id="rememberMe" name="rememberMe">
-                                <label for="rememberMe" style="cursor: pointer; margin: 0;">Remember Me</label>
+                                <label for="rememberMe" style="cursor: pointer; margin: 0; color: #f16622;">Remember Me</label>
                             </div>
                             <div class="forget-password"><a href="forgot-password.php">Forgot Password?</a></div>
                         </div>
                         
                         <button id="continueBtn1" type="submit" class="btn btn-primary">
-                            Log In
+                            Sign In
                         </button>
                     </form>
                 

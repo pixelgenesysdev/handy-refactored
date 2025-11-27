@@ -32,7 +32,7 @@ console.log(passVal);
             'Password Updated!', 
             'Back to Login',
             () => {
-                window.location.href = SITE_URL + '/auth/index.php';
+                window.location.href = SITE_URL + '/auth/login.php';
             }
         );
     }

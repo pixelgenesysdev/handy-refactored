@@ -7,7 +7,7 @@ include '../includes/bothpage.php'; ?>
 <div id="ServicesUserdetailsPage" class="provider-profile">
 
     <div class="topbarwithbtn">
-        <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>Services Provider Detail</h3>
+        <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>Service Detail</h3>
     </div>
 
     <div class="profile-container d-flex flex-wrap">
@@ -22,7 +22,11 @@ include '../includes/bothpage.php'; ?>
                         <span class="status active">Active Now</span>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="window.location.href='<?php echo SITE_URL; ?>pages/reviews.php'">Reviews</button>
+                <div id="button_boxtop">
+                    <button class="btn btn-primary" id="reviewsbtn" onclick="window.location.href='<?php echo SITE_URL; ?>pages/reviews.php'">Reviews</button>
+                    <button class="btn btn-primary" id="editService" onclick="window.location.href='<?php echo SITE_URL; ?>pages/myservicedetail.php'">Edit Service</button>
+                </div>
+                
             </div>
             <div class="provider-servicedetails-img">
                 <img src="<?php echo SITE_URL; ?>/assets/images/services-images/complete-kitchen-remodel.webp" alt="service image">
@@ -39,6 +43,42 @@ include '../includes/bothpage.php'; ?>
                      & recover faster with personalized care. We combine performance science with hands-on 
                      support for athletic potential..
                 </p>
+            </div>
+            <div id="servicesdetailforprovider">
+                
+                <div class="servicesdetailforproviderbox">
+                    <div class="row">
+                        <div>Visiting Amount:</div>
+                        <div class="amount">$30</div>
+                    </div>
+                    <div class="row">
+                        <div>Price on Profile:</div>
+                        <div class="amount">$10</div>
+                    </div>
+                    <div class="row">
+                        <div>Per Hour Amount:</div>
+                        <div class="amount">$10</div>
+                    </div>
+                    <div class="row">
+                        <div>Price on Profile:</div>
+                        <div class="amount">$20</div>
+                    </div>
+                </div>
+
+                <div class="servicesdetailforproviderbox">
+                    <div class="title">Quick Service</div>
+
+                    <div class="row">
+                        <div>Visiting Amount:</div>
+                        <div class="amount">$50</div>
+                    </div>
+
+                    <div class="row">
+                        <div>Per Hour Amount:</div>
+                        <div class="amount">$60</div>
+                    </div>
+                </div>
+
             </div>
 
             <div id="bookNowbtn" class="buttons">
@@ -66,8 +106,113 @@ include '../includes/bothpage.php'; ?>
     if (loginUser.role === 'provider') {
        bookNowbtn.style.display = 'none';
     }
-</script>
 
+    const servicesdetailforprovider = document.getElementById('servicesdetailforprovider');
+    const reviewsbtn = document.getElementById('reviewsbtn');
+    const editService = document.getElementById('editService');
+    const button_boxtop = document.getElementById('button_boxtop'); // Add this line to get the button_boxtop
+    button_boxtop.innerHTML = '';
+    if (loginUser.role === 'provider') {
+        servicesdetailforprovider.innerHTML =
+        `<div id="servicesdetailforproviderinner">      
+                <div class="servicesdetailforproviderbox">
+                    <div class="row">
+                        <div>Visiting Amount:</div>
+                        <div class="amount">$30</div>
+                    </div>
+                    <div class="row">
+                        <div>Price on Profile:</div>
+                        <div class="amount">$10</div>
+                    </div>
+                    <div class="row">
+                        <div>Per Hour Amount:</div>
+                        <div class="amount">$10</div>
+                    </div>
+                    <div class="row">
+                        <div>Price on Profile:</div>
+                        <div class="amount">$20</div>
+                    </div>
+                </div>
+
+                <div class="servicesdetailforproviderbox">
+                    <div class="title">Quick Service</div>
+
+                    <div class="row">
+                        <div>Visiting Amount:</div>
+                        <div class="amount">$50</div>
+                    </div>
+ 
+                    <div class="row">
+                        <div>Per Hour Amount:</div>
+                        <div class="amount">$60</div>
+                    </div>
+                </div>
+        </div>`;
+        button_boxtop.innerHTML = `
+            <button class="btn btn-primary" id="ServicePastexperience">Past Experience</button>
+            <button class="btn btn-primary" id="editService" onclick="window.location.href='<?php echo SITE_URL; ?>pages/edit-service.php'">Edit Service</button> 
+            <button class="btn btn-primary" id="deleteService"><i class="fa fa-trash" aria-hidden="true"></i>Delete Service</button>
+        `;
+    }else{
+        servicesdetailforprovider.innerHTML = '';
+        button_boxtop.innerHTML = `<button class="btn btn-primary" id="reviewsbtn" onclick="window.location.href='<?php echo SITE_URL; ?>pages/reviews.php'">Reviews</button>`;
+    }
+
+    const ServicePastexperience = document.getElementById('ServicePastexperience');
+    ServicePastexperience.addEventListener('click', () => {
+        window.location.href = '<?php echo SITE_URL; ?>pages/past-experience.php';
+    })
+const deleteService = document.getElementById('deleteService');
+deleteService.addEventListener('click', () => {
+    showPopup(
+        'Are you sure you want to delete this service?',
+        'delete',
+        'Delete Service',
+        'Yes',
+        () => {
+            window.location.href = '<?php echo SITE_URL; ?>pages/myservices.php';
+        }
+    )
+})
+</script>
+<style>
+    #servicesdetailforprovider {
+    padding: 20px 0 0;
+}
+
+.servicesdetailforproviderbox {
+    background: #fff;
+    padding: 10px 25px;
+    margin-bottom: 15px;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+}
+
+.servicesdetailforproviderbox .title {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.servicesdetailforproviderbox .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    font-size: 15px;
+}
+
+.servicesdetailforproviderbox .amount {
+    color: #ff7a2c;
+    font-weight: bold;
+}
+
+
+.servicesdetailforproviderbox .row div {
+    width: fit-content;
+    padding: 0;
+}
+</style>
 
 <?php include '../includes/footer.php'; ?>
 

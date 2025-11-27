@@ -4,7 +4,7 @@ $page_js = 'pages_notification.js';
  include '../includes/bothpage.php';
 ?>
 
-
+ 
 
  
 
@@ -17,8 +17,8 @@ $page_js = 'pages_notification.js';
     <div class="filter-container">
       <select id="statusFilter">
         <option value="all">All</option>
-        <option value="showing">Showing</option>
-        <option value="hidden">Hidden</option>
+        <option value="Read">Read</option>
+        <option value="Unread">Unread</option>
       </select>
     </div>
 

@@ -17,8 +17,8 @@ $page_js = 'auth_reset-password.js';
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
-                                <input type="password" id="password" class="password22 toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                <input type="password" id="password" class="password22 toggle-password toggle-password-input" required placeholder="Enter password">
+                                <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>
@@ -28,8 +28,8 @@ $page_js = 'auth_reset-password.js';
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <div class="pass-box">
-                                <input type="password" id="passwordConfirm"  class="password-confirm toggle-password" required placeholder="Enter password">
-                                <i class="fa-solid fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                <input type="password" id="passwordConfirm"  class="password-confirm toggle-password toggle-password-input" required placeholder="Enter password">
+                                <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="cursor: pointer;"></i>
                             </div>
                         </div>
                     </div>

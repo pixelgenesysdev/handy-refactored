@@ -1,7 +1,7 @@
 <?php
 $page_js = 'pages_affiliate.js';
  include '../includes/head.php';
- include '../includes/userspage.php'; ?>
+ include '../includes/bothpage.php'; ?>
 
 
 
@@ -25,12 +25,25 @@ $page_js = 'pages_affiliate.js';
     <!-- List items will be injected here -->
     </div>
 
+    <div class="floating_button">
+        <button class="btn btn-primary" id="withdrawButton">Withdraw Earnings</button>
+    </div>
+
 
 </div>
 
 
 
-
+<style>
+    .floating_button {
+    text-align: center;
+    background: white;
+    padding: 10px 20px;
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+}
+</style>
 
 
 <?php include '../includes/footer.php'; ?>

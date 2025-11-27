@@ -61,3 +61,16 @@
   function goBack() {
     alert('Go back clicked!');
   }
+
+  const withdrawButton = document.getElementById('withdrawButton');
+  withdrawButton.addEventListener('click', () => {
+    showPopup(
+      'Withdrawal successful!',
+      'delete',
+      'Withdrawal',
+      'OK',
+      () => {
+        window.location.reload();
+      }
+    );
+  });

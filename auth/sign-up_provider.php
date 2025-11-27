@@ -31,10 +31,10 @@
 
                 <!-- Phone -->
                 <div class="form-group">
-                    <label for="phone">Phone Number (optional)</label>
+                    <label for="phone">Phone Number*</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-phone"></i>
-                        <input type="tel" id="phone" placeholder="Enter Phone Number">
+                        <input type="tel" id="phone" required placeholder="Enter Phone Number">
                     </div>
                 </div>
 
@@ -67,8 +67,8 @@
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock"></i>
                         <div class="pass-box">
-                            <input type="password" id="password" class="toggle-password" required placeholder="Enter Password">
-                            <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                            <input type="password" id="password" class="toggle-password-input" required placeholder="Enter Password">
+                            <i class="fa-solid fa-eye-slash toggle-password-btn" id="togglePassword" style="cursor: pointer;"></i>
                         </div>
                     </div>
                 </div>
@@ -79,8 +79,8 @@
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock"></i>
                         <div class="pass-box">
-                            <input type="password" id="confirm-password" required placeholder="Confirm Password">
-                            <i class="fa-solid fa-eye" id="toggleConfirmPassword" style="cursor: pointer;"></i>
+                            <input type="password" id="confirm-password" class="toggle-password-input" required placeholder="Confirm Password">
+                            <i class="fa-solid fa-eye-slash toggle-password-btn" id="toggleConfirmPassword" style="cursor: pointer;"></i>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <label>Institution Name</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-building-columns"></i>
-                                <input type="text" name="institutionName[]" placeholder="Enter Institution Name">
+                                <input type="text" name="institutionName[]" required placeholder="Enter Institution Name">
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@
                             <label>Certificate Title</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-file-lines"></i>
-                                <input type="text" name="certificateTitle[]" placeholder="Enter Certificate Title">
+                                <input type="text" name="certificateTitle[]" required placeholder="Enter Certificate Title">
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
                             <label>Certificate Picture</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-image"></i>
-                                <input type="file" name="certificatePicture[]" accept="image/*">
+                                <input type="file" name="certificatePicture[]" required accept="image/*">
                             </div>
                         </div>
                          
@@ -151,7 +151,13 @@
                     if (document.querySelectorAll(".certification-group").length > 1) {
                         certBlock.remove();
                     } else {
-                        alert("You must have at least one certification block.");
+                        showPopup(
+                            'You must have at least one certification block.',
+                            'error',
+                            '',
+                            'OK',
+                            '#'
+                        )
                     }
                 }
             });

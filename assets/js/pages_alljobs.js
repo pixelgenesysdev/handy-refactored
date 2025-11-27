@@ -342,6 +342,7 @@ const statusTextMap = {
 };
 
 // DOM Elements
+const messageicon = document.getElementById('messageicon');
 const topbarwithbtn = document.getElementById('topbarwithbtn');
 const bookingListEl = document.getElementById('bookingList');
 const searchInputEl = document.getElementById('searchInput');
@@ -516,28 +517,54 @@ function downloadDocumentPDF() {
 // ========================================
 
 function handleApprove(booking) {
-  booking.status = 'assigned';
-  booking.providerName = 'Provider Assigned';
-  booking.providerPhone = '0301-111-2222';
-  alert('Booking approved and provider assigned!');
-  goBackAndRender();
+  showPopup(
+    'Appointment has been approved successfully',
+    'delete',
+    'Approve Booking',
+    'Okay',
+    () => {
+      booking.status = 'assigned';
+      booking.providerName = 'Provider Assigned';
+      booking.providerPhone = '0301-111-2222';
+      goBackAndRender();
+    },
+
+  );
 }
 
 function handleReject(booking) {
-  const reason = prompt('Enter rejection reason:');
-  if (reason && reason.trim()) {
-    booking.rejectReason = reason.trim();
-    booking.status = 'rejected';
-    alert('Booking rejected.');
-    goBackAndRender();
-  }
+
+    showPopup(
+    'Are you sure you want to reject this booking?',
+    'delete',
+    'Reject Booking',
+    'Yes',
+    () => {
+      const reason = prompt('Enter rejection reason:');
+      if (reason && reason.trim()) {
+        booking.rejectReason = reason.trim();
+        booking.status = 'rejected';
+        goBackAndRender();
+      }
+
+    },
+  );
+
 }
 
 function handleGoing(booking) {
-  booking.status = 'route';
-  alert('Status updated to In Route!');
-  goBackAndRender();
+  showPopup(
+    'Are you sure you want to mark this booking as going?',
+    'delete',
+    'Mark Going',
+    'Yes',
+    () => {
+      booking.status = 'route';
+      goBackAndRender();
+    }
+  );
 }
+
 
 function handleStartWork(booking) {
   // Show upload interface
@@ -560,7 +587,12 @@ function handleStartWork(booking) {
 
 function confirmStartWork() {
   if (currentBooking.beforeImages.length === 0) {
-    alert('Please upload at least one before image to start work.');
+    showPopup(
+      'Please upload at least one before image to start work.',
+      'error',
+      'Error Found',
+      'Okay'
+    );
     return;
   }
   
@@ -574,8 +606,15 @@ function confirmStartWork() {
   });
   currentBooking.status = 'started';
   
-  alert('Work started successfully!');
-  goBackAndRender();
+  showPopup(
+    'Are you sure you want to start work?',
+    'success',
+    'Start Work',
+    'Okay',
+    () => {
+      goBackAndRender();
+    }
+  )
 }
 
 function handleMarkComplete(booking) {
@@ -599,7 +638,12 @@ function handleMarkComplete(booking) {
 
 function confirmMarkComplete() {
   if (currentBooking.afterImages.length === 0) {
-    alert('Please upload at least one after image to mark as complete.');
+    showPopup(
+      'Please upload at least one after image to mark work as complete.',
+      'error',
+      'Error Found',
+      'Okay'
+    )
     return;
   }
   
@@ -610,8 +654,15 @@ function confirmMarkComplete() {
     initializeInvoice(currentBooking);
   }
   
-  alert('Work marked as complete!');
-  goBackAndRender();
+  showPopup(
+    'Are you sure you want to mark work as complete?',
+    'success',
+    'Mark Work Complete',
+    'Okay',
+    () => {
+      goBackAndRender();
+    }
+  )
 }
 
 // ========================================
@@ -992,11 +1043,28 @@ function updateInvoiceTotals() {
 // ========================================
 
 function handleMarkPaid(booking) {
-  if (confirm('Confirm that payment has been received for this booking?')) {
-    booking.status = 'completed';
-    alert('Booking marked as paid and completed!');
-    goBackAndRender();
-  }
+  showPopup(
+    
+    'Are you sure you want to mark this booking as paid and completed?',
+    'delete',
+    'Mark as Paid',
+    'Yes',
+     () => {
+      setTimeout(() => {
+          
+      showPopup(
+        'Booking marked as paid and completed!',
+         'success', 
+         'Success', 
+         'Close', 
+         () => {
+            booking.status = 'completed';
+            goBackAndRender();
+         }
+        );
+        } , 1000);
+     }
+  )
 }
 
 // ========================================
@@ -1074,6 +1142,7 @@ function showBookingDetail(booking) {
   
   // Clear actions
   document.getElementById('actionsSection').innerHTML = '';
+  messageicon.classList.add('hidden');
 
   // Show provider details if assigned or later
   if (['assigned', 'route', 'started', 'completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status) && booking.providerName) {
@@ -1207,9 +1276,6 @@ function renderActionButtons(booking) {
         <button class="btn btn-info btn-primary" onclick="openInvoiceModal(false, true)">
           <i class="fa fa-file-invoice"></i> View Invoice
         </button>
-        <button class="btn btn-primary black" onclick="openReviewForm()">
-          <i class="fa fa-star"></i> Leave a Review
-        </button>
       `;
       break;
 
@@ -1223,12 +1289,12 @@ function renderActionButtons(booking) {
 // REVIEW FUNCTIONS
 // ========================================
 
-function openReviewForm() {
-  if (!currentBooking) return;
-  document.getElementById('newreviewform').classList.remove('d-none');
-  bookingDetailEl.classList.add('hidden');
-  backBtnreviewformUser.textContent = currentBooking.providerName || currentBooking.user;
-}
+// function openReviewForm() {
+//   if (!currentBooking) return;
+//   document.getElementById('newreviewform').classList.remove('d-none');
+//   bookingDetailEl.classList.add('hidden');
+//   backBtnreviewformUser.textContent = currentBooking.providerName || currentBooking.user;
+// }
 
 // ========================================
 // EVENT LISTENERS
@@ -1267,3 +1333,4 @@ document.getElementById('invoiceModal').addEventListener('click', (e) => {
 
 // Initial render
 renderBookings();
+

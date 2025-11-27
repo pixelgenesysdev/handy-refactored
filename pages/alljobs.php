@@ -17,16 +17,15 @@ include '../includes/providerpage.php';
   <div id="topbarwithbtn" class="topbarwithbtn">
     <h3>All Jobs</h3>
   </div>
-    <div class="block-toggle">
+    <!-- <div class="block-toggle">
             <h4>Urgent Bookings</h4>
-            <!-- toggle -->
             <div class="toggle off" id="toggleblock">
                 <input type="checkbox" id="toggle">
                 <div class="slider"></div>
             </div>
-    </div>
+    </div> -->
 
-        <input type="search" id="searchInput" placeholder="Search by ID or Name..." />
+    <input type="search" id="searchInput" placeholder="Search by ID or Name..." />
 
   <!-- Booking List -->
   <div class="booking-list" id="bookingList"></div>
@@ -36,6 +35,7 @@ include '../includes/providerpage.php';
 
     <div id="backBtn" class="detail-header">
       <h3 style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i> Booking Details</h3>
+      <span id="messageicon"><i class="fa-solid fa-envelope"></i></span>
       <span id="detailStatus" class="status-badge"></span>
     </div>
 
@@ -73,23 +73,30 @@ include '../includes/providerpage.php';
       </table>
     </div>
 
-    <!-- Provider Details Section -->
+    <!-- User Details Section -->
     <div class="detail-box hidden" id="providerSection">
-      <h5>Provider Details</h5>
+      <h5>User Details</h5>
       <table class="detail-table">
         <tr><td>Provider Name:</td><td class="orange" id="detailProviderName">Provider A</td></tr>
         <tr><td>Provider Phone:</td><td class="orange" id="detailProviderPhone">0301-123-4567</td></tr>
       </table>
-      <div id="mapPlaceholder" style="height: 200px; background: #f0f0f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #999;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37487298.55536108!2d-140.84395936386323!3d42.30356956719025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e1!3m2!1sen!2s!4v1764184923226!5m2!1sen!2s" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- <div id="mapPlaceholder" style="height: 200px; background: #f0f0f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #999;">
         <i class="fa fa-map-marker-alt" style="font-size: 3em;"></i>
         <span style="margin-left: 10px;">Map Integration Placeholder</span>
-      </div>
+      </div> -->
     </div>
 
     <!-- Start Time Section -->
     <div class="detail-box hidden" id="startTimeSection">
       <h5>Work Started At</h5>
       <p id="detailStartTime" class="orange" style="font-size: 1.1em; font-weight: 600;">18/11/2025 01:00 PM</p>
+    </div>
+
+    <!-- End Time Section -->
+    <div class="detail-box" id="endTimeSection">
+      <h5>Work End At</h5>
+      <p id="detailendTime" class="orange" style="font-size: 1.1em; font-weight: 600;">18/11/2025 01:00 PM</p>
     </div>
 
     <!-- Images Section -->
@@ -106,20 +113,18 @@ include '../includes/providerpage.php';
     </div>
 
     <!-- Document Section -->
-    <div class="detail-box hidden" id="documentIconSection">
+    <div class="detail-box" id="documentIconSection">
       <h5>Work Documents</h5>
-      <div style="text-align: center; padding: 20px;">
+      <div style="padding: 20px;">
         <i class="fa fa-file-text icon-btn" onclick="openDocumentModal(false)" style="font-size: 3em; cursor: pointer; color: #ff6b35;"></i>
-        <p style="margin-top: 10px; color: #666;">View Work Documents</p>
       </div>
     </div>
 
     <!-- Invoice Section -->
     <div class="detail-box hidden" id="invoiceIconSection">
       <h5>Invoice</h5>
-      <div style="text-align: center; padding: 20px;">
+      <div style="padding: 20px;">
         <i class="fa fa-file-invoice-dollar icon-btn" onclick="openInvoiceModal(false, true)" style="font-size: 3em; cursor: pointer; color: #ff6b35;"></i>
-        <p style="margin-top: 10px; color: #666;">View Invoice Details</p>
       </div>
     </div>
 

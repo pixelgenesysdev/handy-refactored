@@ -1,5 +1,5 @@
 // Extracted from: pages/marketplace.php
-
+const MyProductsDetailsbtn = document.querySelector('#MyProductsDetailsbtn');
 const productImage = document.getElementById('productImage');
         const uploadBox = document.getElementById('uploadBox');
         const uploadContent = document.getElementById('uploadContent');
@@ -481,7 +481,17 @@ const productImage = document.getElementById('productImage');
 
         function editbuttonform(productid){
                 MyProductsDetailsform.classList.remove('d-none');
-                MyProductsDetailsform.querySelector('form button[type="submit"]').textContent = 'Update';
+                MyProductsDetailsbtn.textContent = 'Update';
+                MyProductsDetailsbtn.addEventListener('click', () => {
+                    showPopup(
+                        'Product updated successfully',
+                        'success',
+                        'OK',
+                        () => {
+                            window.location.reload();
+                        }
+                    )
+                })
                 MyProductsDetailsform.classList.add('edit-mode');
                 document.getElementById('marketproducttabscontent').classList.add('d-none');
                 document.getElementById('topbarwithbtn').classList.add('d-none');
@@ -502,7 +512,7 @@ const productImage = document.getElementById('productImage');
                     let oldImg = uploadBox.querySelector('img');
                     if (oldImg) oldImg.remove();
                     const img = document.createElement('img');
-                    img.src = `${SITE_URL}assets/images/${product.image}`;
+                    img.src = `${SITE_URL}assets/images/services-images/${product.image}`;
                     uploadBox.appendChild(img);
                     uploadContent.style.display = 'none';
                     img.style.display = 'block';
@@ -516,8 +526,19 @@ const productImage = document.getElementById('productImage');
             MyProductsDetailsform.classList.add('New-mode');
             document.getElementById('marketproducttabscontent').classList.add('d-none');
             document.getElementById('topbarwithbtn').classList.add('d-none');
-            tabtitletabform.textContent = 'New Product';
-            MyProductsDetailsform.querySelector('form button[type="submit"]').textContent = 'Add';
+            tabtitletabform.textContent = 'Add New Product';
+            MyProductsDetailsbtn.textContent = 'Add Product';
+            MyProductsDetailsbtn.addEventListener('click', () => {
+                showPopup(
+                    'Product has been Added Successfully',
+                    'success',
+                    'Successfully Added',
+                    'OK',
+                    () => {
+                        window.location.reload();
+                    }
+                )
+            })
         });
 
         function goBackToMyProducts() {

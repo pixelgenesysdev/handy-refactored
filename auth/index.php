@@ -21,6 +21,7 @@ $page_js = 'auth_indextest.js';
             </div>
 
             <button id="continueBtn" disabled class="btn btn-primary">Continue</button>
+            <p class="bottom-link-txt">Already have an account! <a href="login.php">Sign In</a></p>
         </div>
     </div>
 </div>
