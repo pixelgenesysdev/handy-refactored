@@ -102,7 +102,7 @@ include '../includes/providerpage.php';
     <!-- BUTTONS -->
     <div style="display:flex; gap:10px; margin-bottom:16px;">
         <button id="editBtn" class="primary-btn"  style="display:none;" >Edit</button>
-        <button id="saveBtn" class="primary-btn">Save</button>
+        <button id="saveBtn" class="primary-btn">Update</button>
     </div> 
 
 </div>
@@ -144,7 +144,7 @@ document.getElementById("saveBtn").onclick = () => {
         "Changes Saved!",
         "Ok",
         () => {
-            window.location.reload();
+            window.location.href = "myservices.php";
         }
        
         

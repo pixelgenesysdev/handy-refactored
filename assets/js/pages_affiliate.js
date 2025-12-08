@@ -68,7 +68,7 @@
       'Withdrawal successful!',
       'delete',
       'Withdrawal',
-      'OK',
+      'Yes',
       () => {
         window.location.reload();
       }

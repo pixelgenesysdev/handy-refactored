@@ -14,9 +14,13 @@ include '../includes/providerpage.php';
 
 <div id="bookingPage">
 
-  <div id="topbarwithbtn" class="topbarwithbtn">
-    <h3>All Jobs</h3>
-  </div>
+    <!-- ये REPLACE करें existing topbarwithbtn div को: -->
+    <div id="topbarwithbtn" class="topbarwithbtn">
+      <h3>All Jobs</h3>
+      <button class="btn btn-primary" id="toggleFilterBtn" onclick="toggleFilterSection()">
+        <i class="fa fa-filter"></i> Filter
+      </button>
+    </div>
     <!-- <div class="block-toggle">
             <h4>Urgent Bookings</h4>
             <div class="toggle off" id="toggleblock">
@@ -25,7 +29,90 @@ include '../includes/providerpage.php';
             </div>
     </div> -->
 
-    <input type="search" id="searchInput" placeholder="Search by ID or Name..." />
+  <input type="search" id="searchInput" placeholder="Search by ID or Name..." />
+<!-- ये code डालें topbarwithbtn div के बाद और searchInput से पहले -->
+
+  <!-- Filter Section -->
+  <div class="filter-section" id="filterSection" style="display: none;">
+    <div class="filter-row">
+      <!-- Status Filter -->
+      <div class="filter-group">
+        <label>Status:</label>
+        <select id="statusFilter" class="filter-select">
+          <option value="all">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="assigned">Assigned</option>
+          <option value="route">In Route</option>
+          <option value="started">Started</option>
+          <option value="completed_unpaid">Completed Unpaid</option>
+          <option value="completed">Completed</option>
+          <option value="unpaid_urgent">Unpaid Urgent</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+
+      <!-- Date Filter -->
+      <div class="filter-group">
+        <label>From Date:</label>
+        <input type="date" id="dateFromFilter" class="filter-input">
+      </div>
+
+      <div class="filter-group">
+        <label>To Date:</label>
+        <input type="date" id="dateToFilter" class="filter-input">
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <!-- Service Type Filter -->
+      <div class="filter-group">
+        <label>Service Type:</label>
+        <select id="serviceFilter" class="filter-select">
+          <option value="all">All Services</option>
+          <option value="Cleaning Service">Cleaning Service</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Painting">Painting</option>
+          <option value="Gardening">Gardening</option>
+          <option value="Carpet Cleaning">Carpet Cleaning</option>
+          <option value="General Repair">General Repair</option>
+          <option value="Emergency Fix">Emergency Fix</option>
+          <option value="Inspection">Inspection</option>
+          <option value="Window Cleaning">Window Cleaning</option>
+        </select>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-group">
+        <label>Price Range:</label>
+        <div class="price-range">
+          <input type="number" id="priceMinFilter" class="filter-input" placeholder="Min">
+          <span>to</span>
+          <input type="number" id="priceMaxFilter" class="filter-input" placeholder="Max">
+        </div>
+      </div>
+
+      <!-- Urgent Filter -->
+      <div class="filter-group">
+        <label>Urgent Only:</label>
+        <label class="switch">
+          <input type="checkbox" id="urgentFilter">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="filter-group" style="margin-left: auto;">
+        <button class="btn btn-secondary btn-sm" id="clearFiltersBtn">
+          <i class="fa fa-times"></i> Clear
+        </button>
+        <button class="btn btn-primary btn-sm" id="applyFiltersBtn">
+          <i class="fa fa-check"></i> Apply
+        </button>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Booking List -->
   <div class="booking-list" id="bookingList"></div>
@@ -35,8 +122,10 @@ include '../includes/providerpage.php';
 
     <div id="backBtn" class="detail-header">
       <h3 style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i> Booking Details</h3>
-      <span id="messageicon"><i class="fa-solid fa-envelope"></i></span>
-      <span id="detailStatus" class="status-badge"></span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="messageicon" style="cursor: pointer;" title="Chat"><i class="fa-solid fa-comments"></i></span>
+        <span id="detailStatus" class="status-badge"></span>
+      </div>
     </div>
 
     <!-- Service Name Section -->
@@ -77,8 +166,8 @@ include '../includes/providerpage.php';
     <div class="detail-box hidden" id="providerSection">
       <h5>User Details</h5>
       <table class="detail-table">
-        <tr><td>Provider Name:</td><td class="orange" id="detailProviderName">Provider A</td></tr>
-        <tr><td>Provider Phone:</td><td class="orange" id="detailProviderPhone">0301-123-4567</td></tr>
+        <tr><td>User Name:</td><td class="orange" id="detailProviderName">Provider A</td></tr>
+        <tr><td>User Phone:</td><td class="orange" id="detailProviderPhone">0301-123-4567</td></tr>
       </table>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37487298.55536108!2d-140.84395936386323!3d42.30356956719025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e1!3m2!1sen!2s!4v1764184923226!5m2!1sen!2s" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <!-- <div id="mapPlaceholder" style="height: 200px; background: #f0f0f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #999;">
@@ -169,6 +258,10 @@ include '../includes/providerpage.php';
     </div>
     <div class="modal-body" id="modalInvoiceContent"></div>
     <div class="modal-footer">
+      <!-- NEW: Download Invoice PDF Button -->
+      <button id="modalDownloadInvoiceBtn" class="btn btn-success hidden" onclick="downloadInvoicePDF()">
+        <i class="fa fa-download"></i> Download Invoice PDF
+      </button>
       <button class="btn btn-secondary" onclick="closeInvoiceModal()">Close</button>
     </div>
   </div>
@@ -275,3 +368,7 @@ include '../includes/providerpage.php';
 </script>
 
 <?php include '../includes/footer.php'; ?>
+
+<style>
+ 
+</style>

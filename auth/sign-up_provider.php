@@ -46,6 +46,15 @@
                         <input type="text" id="language" placeholder="Enter Language">
                     </div>
                 </div>
+                
+                <!-- location -->
+                <div class="form-group">
+                    <label for="location">location</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-location"></i>
+                        <input type="" id="location" placeholder="Enter location">
+                    </div>
+                </div>
 
                 <!-- Gender -->
                 <div class="form-group">

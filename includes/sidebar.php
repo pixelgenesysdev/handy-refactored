@@ -13,20 +13,20 @@
 
   <nav class="menu">
 
-    <a id="nav-btn" data-auth="yes" data-role="customer" class="btn-sidebar side-menu <?php echo ($currentPage == 'dashboard.php' || $currentPage == 'services.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers_details.php' || $currentPage == 'providers_services-details.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/">
+    <a id="nav-btn" data-auth="yes" data-role="customer" class="btn-sidebar side-menu <?php echo ($currentPage == 'dashboard.php' || $currentPage == 'user_setting.php' || $currentPage == 'notification.php' || $currentPage == 'services.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers_details.php' || $currentPage == 'providers_services-details.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
-    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'provider_dashboard.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/provider_dashboard.php">
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'provider_dashboard.php' || $currentPage == 'user_setting.php' || $currentPage == 'notification.php' || $currentPage == 'reviews.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/provider_dashboard.php">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
 
-    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'myservices.php' || $currentPage == 'new_service.php' || $currentPage == 'create-service.php' || $currentPage == 'providers_services-details.php'|| $currentPage == 'edit-service.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/myservices"> 
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'myservices.php' || $currentPage == 'past-experience.php' || $currentPage == 'new_service.php' || $currentPage == 'create-service.php' || $currentPage == 'providers_services-details.php'|| $currentPage == 'edit-service.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/myservices"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>My Services</span>
     </a>
 
 
     <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'marketplace.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/marketplace"> 
-      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>Marketplace</span>
+      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Market Place" /><span>Market Place</span>
     </a>
 
 

@@ -1,0 +1,70 @@
+/* Filters Container */
+.filters-container {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.filters-container .form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.filters-container .input-group {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.filters-container .input-group-text {
+    background: #fff;
+    border-right: none;
+}
+
+.filters-container .input-group input {
+    border-left: none;
+}
+
+.filters-container .input-group input:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+/* Quick Filter Buttons */
+.btn-outline-primary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+/* Filter Summary */
+.filter-summary {
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filter-summary #productCount {
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Product Category Badge */
+.productcategory {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #666;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+}

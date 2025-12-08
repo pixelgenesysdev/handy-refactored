@@ -1,0 +1,5 @@
+{
+  "summary": "Reviewed shared includes and page scripts; found per-page JS was executed in the head before DOM load, causing null element errors across pages. Added defer to the per-page script include in includes/head.php so scripts run after parsing.",
+  "current_status": "Per-page scripts now deferred; pages should load without JS null errors pending browser retest."
+}
+

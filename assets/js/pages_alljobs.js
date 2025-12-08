@@ -6,6 +6,14 @@ const { jsPDF } = window.jspdf;
 // Placeholder image for demonstration
 const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2RkZCIgLz48dGV4dCB4PSI1MCIgeT0iNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
 
+
+
+
+// Current booking reference
+let currentBooking = null;
+
+
+
 // ========================================
 // BOOKING DATA (10 Sample Bookings)
 // ========================================
@@ -43,8 +51,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 10,
     isUrgent: false,
-    providerName: '',
-    providerPhone: '',
+    clientName: '',
+    clientPhone: '',
     rejectReason: ''
   },
   {
@@ -68,8 +76,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 15,
     isUrgent: false,
-    providerName: 'Provider A',
-    providerPhone: '0301-123-4567',
+    clientName: 'Client A',
+    clientPhone: '0301-123-4567',
     rejectReason: ''
   },
   {
@@ -93,8 +101,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 20,
     isUrgent: false,
-    providerName: 'Provider B',
-    providerPhone: '0301-234-5678',
+    clientName: 'Client B',
+    clientPhone: '0301-234-5678',
     rejectReason: ''
   },
   {
@@ -118,8 +126,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 25,
     isUrgent: false,
-    providerName: 'Provider C',
-    providerPhone: '0301-345-6789',
+    clientName: 'Client C',
+    clientPhone: '0301-345-6789',
     rejectReason: ''
   },
   {
@@ -150,8 +158,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 30,
     isUrgent: false,
-    providerName: 'Provider D',
-    providerPhone: '0301-456-7890',
+    clientName: 'Client D',
+    clientPhone: '0301-456-7890',
     rejectReason: ''
   },
   {
@@ -193,8 +201,8 @@ const bookingData = [
     extraWork: 'Extra stain removal',
     invoiceAmount: 38.5,
     isUrgent: false,
-    providerName: 'Provider E',
-    providerPhone: '0301-567-8901',
+    clientName: 'Client E',
+    clientPhone: '0301-567-8901',
     rejectReason: ''
   },
   {
@@ -230,8 +238,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 44,
     isUrgent: false,
-    providerName: 'Provider F',
-    providerPhone: '0301-678-9012',
+    clientName: 'Client F',
+    clientPhone: '0301-678-9012',
     rejectReason: ''
   },
   {
@@ -273,8 +281,8 @@ const bookingData = [
     extraWork: 'Rush fee applied',
     invoiceAmount: 77,
     isUrgent: true,
-    providerName: 'Provider G',
-    providerPhone: '0301-789-0123',
+    clientName: 'Client G',
+    clientPhone: '0301-789-0123',
     rejectReason: ''
   },
   {
@@ -298,8 +306,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 12,
     isUrgent: false,
-    providerName: '',
-    providerPhone: '',
+    clientName: '',
+    clientPhone: '',
     rejectReason: 'Not available on short notice'
   },
   {
@@ -323,8 +331,8 @@ const bookingData = [
     extraWork: '',
     invoiceAmount: 18,
     isUrgent: false,
-    providerName: '',
-    providerPhone: '',
+    clientName: '',
+    clientPhone: '',
     rejectReason: ''
   }
 ];
@@ -342,6 +350,8 @@ const statusTextMap = {
 };
 
 // DOM Elements
+const endTimeSection = document.getElementById('endTimeSection');
+const detailendTime = document.getElementById('detailendTime');
 const messageicon = document.getElementById('messageicon');
 const topbarwithbtn = document.getElementById('topbarwithbtn');
 const bookingListEl = document.getElementById('bookingList');
@@ -351,9 +361,26 @@ const backBtnbookingdetail = document.querySelector('.booking-detail #backBtn h3
 const Newreviewform = document.querySelector('#newreviewform');
 const backBtnreviewform = document.querySelector('#newreviewform #backBtn h3');
 const backBtnreviewformUser = document.querySelector('#newreviewform h3 span#providername');
+ const filterSection = document.getElementById('filterSection');
 
-// Current booking reference
-let currentBooking = null;
+
+// ========================================
+// NEW: REJECTION MODAL VARIABLES
+// ========================================
+let rejectBooking = null;
+let rejectModal = null;
+
+// ========================================
+// UTILITY: FILE TO BASE64 CONVERSION
+// ========================================
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 // ========================================
 // MODAL FUNCTIONS
@@ -386,6 +413,77 @@ function openInvoiceModal(isEdit = false, isView = true) {
 function closeInvoiceModal() {
   document.getElementById('invoiceModal').classList.add('hidden');
   document.getElementById('modalInvoiceContent').innerHTML = '';
+  document.getElementById('modalDownloadInvoiceBtn').classList.add('hidden');
+}
+
+// ========================================
+// NEW: REJECTION MODAL FUNCTIONS
+// ========================================
+function openRejectModal() {
+  if (!rejectBooking) return;
+  
+  // Create modal if it doesn't exist
+  if (!rejectModal) {
+    rejectModal = document.createElement('div');
+    rejectModal.id = 'rejectModal';
+    rejectModal.className = 'modal-overlay hidden';
+    rejectModal.innerHTML = `
+      <div class="modal-container" style="max-width: 500px;">
+        <div class="modal-header">
+          <h2>Reject Booking</h2>
+          <span class="modal-close" onclick="closeRejectModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p style="margin-bottom: 15px; color: #666;">Please provide a reason for rejecting this booking:</p>
+          <textarea 
+            id="rejectReasonInput" 
+            rows="4" 
+            style="width:100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;"
+            placeholder="Enter rejection reason here..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" onclick="confirmReject()">
+            <i class="fa fa-times"></i> Confirm Rejection
+          </button>
+          <button class="btn btn-secondary" onclick="closeRejectModal()">
+            <i class="fa fa-times"></i> Cancel
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(rejectModal);
+  }
+  
+  rejectModal.classList.remove('hidden');
+  document.getElementById('rejectReasonInput').value = '';
+  setTimeout(() => {
+    document.getElementById('rejectReasonInput').focus();
+  }, 100);
+}
+
+function closeRejectModal() {
+  if (rejectModal) {
+    rejectModal.classList.add('hidden');
+  }
+  rejectBooking = null;
+}
+
+function confirmReject() {
+  const reasonInput = document.getElementById('rejectReasonInput');
+  const reason = reasonInput.value.trim();
+  
+  if (!reason) {
+    showPopup('Please enter a rejection reason.', 'error', 'Error', 'Okay');
+    reasonInput.focus();
+    return;
+  }
+  
+  if (rejectBooking) {
+    rejectBooking.rejectReason = reason;
+    rejectBooking.status = 'rejected';
+    closeRejectModal();
+    goBackAndRender();
+  }
 }
 
 // ========================================
@@ -397,6 +495,7 @@ function goBackAndRender() {
   bookingListEl.classList.remove('hidden');
   searchInputEl.classList.remove('hidden');
   topbarwithbtn.classList.remove('hidden');
+  document.getElementById('imagesSection').classList.add('hidden');
   renderBookings();
 }
 
@@ -416,21 +515,25 @@ function renderImageGrid(containerId, images, isBefore = true, editable = false)
     container.appendChild(item);
   });
   
-  if (editable && images.length < 6) {
+  if (editable && images.length < 4) {
     const addBtn = document.createElement('div');
     addBtn.className = 'image-item add-image';
     addBtn.innerHTML = '+';
-    addBtn.addEventListener('click', () => {
+    addBtn.addEventListener('click', async () => {
       const input = document.createElement('input');
       input.type = 'file';
       input.accept = 'image/*';
       input.multiple = true;
-      input.onchange = (e) => {
-        const files = Array.from(e.target.files).slice(0, 6 - images.length);
-        files.forEach(file => {
-          const url = URL.createObjectURL(file);
-          currentBooking[isBefore ? 'beforeImages' : 'afterImages'].push(url);
-        });
+      input.onchange = async (e) => {
+        const files = Array.from(e.target.files).slice(0, 4 - images.length);
+        for (let file of files) {
+          try {
+            const base64 = await readFileAsBase64(file);
+            currentBooking[isBefore ? 'beforeImages' : 'afterImages'].push(base64);
+          } catch (error) {
+            console.error('Error reading file:', error);
+          }
+        }
         renderImageGrid(containerId, currentBooking[isBefore ? 'beforeImages' : 'afterImages'], isBefore, editable);
       };
       input.click();
@@ -451,7 +554,7 @@ function removeImage(containerId, index) {
 }
 
 // ========================================
-// PDF GENERATION
+// PDF GENERATION - UPDATED WITH IMAGES
 // ========================================
 
 function downloadDocumentPDF() {
@@ -477,7 +580,9 @@ function downloadDocumentPDF() {
   y += 7;
   doc.text(`Address: ${currentBooking.address}`, 20, y);
   y += 7;
-  doc.text(`Start Time: ${currentBooking.startTime}`, 20, y);
+  doc.text(`Service Date: ${currentBooking.serviceDate}`, 20, y);
+  y += 7;
+  doc.text(`Start Time: ${currentBooking.startTime || 'N/A'}`, 20, y);
   y += 10;
   
   // Services Section
@@ -508,8 +613,121 @@ function downloadDocumentPDF() {
   doc.setFont(undefined, 'bold');
   doc.setFontSize(14);
   doc.text(`Total: $${currentBooking.document.total}`, 20, y);
+  y += 15;
+  
+  // NEW: ADD BEFORE/AFTER IMAGES (MAX 4 EACH)
+  const beforeImgs = currentBooking.beforeImages.slice(0, 4);
+  const afterImgs = currentBooking.afterImages.slice(0, 4);
+  
+  // Function to add images to PDF
+  const addImagesToPDF = (images, title) => {
+    if (images.length === 0) return;
+    
+    // Check if we need a new page
+    if (y > 150) {
+      doc.addPage();
+      y = 20;
+    }
+    
+    doc.setFontSize(14);
+    doc.setFont(undefined, 'bold');
+    doc.text(title, 105, y, { align: 'center' });
+    y += 10;
+    
+    let x = 20;
+    for (let i = 0; i < images.length; i++) {
+      if (i > 0 && i % 2 === 0) {
+        y += 45;
+        x = 20;
+      }
+      if (y > 250) {
+        doc.addPage();
+        y = 20;
+        x = 20;
+      }
+      try {
+        doc.addImage(images[i], 'JPEG', x, y, 40, 40);
+      } catch (e) {
+        console.error('Error adding image:', e);
+      }
+      x += 45;
+    }
+    y += 50;
+  };
+  
+  if (beforeImgs.length > 0) {
+    addImagesToPDF(beforeImgs, 'Before Work Images');
+  }
+  
+  if (afterImgs.length > 0) {
+    addImagesToPDF(afterImgs, 'After Work Images');
+  }
   
   doc.save(`work_document_${currentBooking.id}.pdf`);
+}
+
+// NEW: INVOICE PDF DOWNLOAD FUNCTION
+function downloadInvoicePDF() {
+  if (!currentBooking) return;
+  
+  const doc = new jsPDF();
+  let y = 20;
+  
+  // Header
+  doc.setFontSize(20);
+  doc.setFont(undefined, 'bold');
+  doc.text('INVOICE', 105, y, { align: 'center' });
+  y += 10;
+  doc.setFontSize(12);
+  doc.setFont(undefined, 'normal');
+  doc.text(`Invoice #${currentBooking.invoice.number}`, 105, y, { align: 'center' });
+  y += 15;
+  
+  // Bill To and Date
+  doc.setFontSize(12);
+  doc.text(`Bill To: ${currentBooking.invoice.billTo}`, 20, y);
+  doc.text(`Date: ${currentBooking.invoice.date}`, 160, y);
+  y += 15;
+  
+  // Address
+  doc.text(`Address: ${currentBooking.address}`, 20, y);
+  y += 10;
+  
+  // Line items table header
+  doc.setFont(undefined, 'bold');
+  doc.text('Item', 20, y);
+  doc.text('Description', 60, y);
+  doc.text('Qty', 110, y);
+  doc.text('Price', 130, y);
+  doc.text('Total', 160, y);
+  y += 7;
+  doc.setFont(undefined, 'normal');
+  
+  // Line items
+  currentBooking.invoice.lines.forEach(line => {
+    doc.text(line.item, 20, y);
+    doc.text(line.description, 60, y);
+    doc.text(line.qty.toString(), 110, y);
+    doc.text(`$${line.price.toFixed(2)}`, 130, y);
+    doc.text(`$${line.total.toFixed(2)}`, 160, y);
+    y += 7;
+  });
+  
+  y += 10;
+  
+  // Totals
+  doc.setFont(undefined, 'bold');
+  doc.text('Subtotal:', 130, y);
+  doc.text(`$${currentBooking.invoice.subtotal.toFixed(2)}`, 160, y);
+  y += 7;
+  doc.text('Tax (10%):', 130, y);
+  doc.text(`$${currentBooking.invoice.tax.toFixed(2)}`, 160, y);
+  y += 7;
+  doc.setFontSize(14);
+  doc.text('Total:', 130, y);
+  doc.text(`$${currentBooking.invoice.total.toFixed(2)}`, 160, y);
+  
+  doc.save(`invoice_${currentBooking.id}.pdf`);
 }
 
 // ========================================
@@ -519,37 +737,21 @@ function downloadDocumentPDF() {
 function handleApprove(booking) {
   showPopup(
     'Appointment has been approved successfully',
-    'delete',
+    'success',
     'Approve Booking',
-    'Okay',
+    'Yes',
     () => {
       booking.status = 'assigned';
-      booking.providerName = 'Provider Assigned';
-      booking.providerPhone = '0301-111-2222';
+      booking.clientName = 'Client Assigned';
+      booking.clientPhone = '0301-111-2222';
       goBackAndRender();
-    },
-
-  );
+    }
+  ); 
 }
 
 function handleReject(booking) {
-
-    showPopup(
-    'Are you sure you want to reject this booking?',
-    'delete',
-    'Reject Booking',
-    'Yes',
-    () => {
-      const reason = prompt('Enter rejection reason:');
-      if (reason && reason.trim()) {
-        booking.rejectReason = reason.trim();
-        booking.status = 'rejected';
-        goBackAndRender();
-      }
-
-    },
-  );
-
+  rejectBooking = booking;
+  openRejectModal();
 }
 
 function handleGoing(booking) {
@@ -565,11 +767,10 @@ function handleGoing(booking) {
   );
 }
 
-
 function handleStartWork(booking) {
   // Show upload interface
   document.getElementById('imagesSection').classList.remove('hidden');
-  document.getElementById('imagesTitle').textContent = 'Upload Pictures Before Work';
+  document.getElementById('imagesTitle').textContent = 'Upload Pictures Before Work (Max 4)';
   document.getElementById('beforeWorkDiv').classList.remove('hidden');
   document.getElementById('afterWorkDiv').classList.add('hidden');
   renderImageGrid('beforeImagesGrid', booking.beforeImages, true, true);
@@ -612,15 +813,16 @@ function confirmStartWork() {
     'Start Work',
     'Okay',
     () => {
+      document.getElementById('imagesSection').classList.add('hidden');
       goBackAndRender();
     }
-  )
+  );
 }
 
 function handleMarkComplete(booking) {
   // Show after images upload interface
   document.getElementById('imagesSection').classList.remove('hidden');
-  document.getElementById('imagesTitle').textContent = 'Upload Pictures After Work';
+  document.getElementById('imagesTitle').textContent = 'Upload Pictures After Work (Max 4)';
   document.getElementById('beforeWorkDiv').classList.add('hidden');
   document.getElementById('afterWorkDiv').classList.remove('hidden');
   renderImageGrid('afterImagesGrid', booking.afterImages, false, true);
@@ -643,7 +845,7 @@ function confirmMarkComplete() {
       'error',
       'Error Found',
       'Okay'
-    )
+    );
     return;
   }
   
@@ -656,17 +858,18 @@ function confirmMarkComplete() {
   
   showPopup(
     'Are you sure you want to mark work as complete?',
-    'success',
+    'delete',
     'Mark Work Complete',
-    'Okay',
+    'yes',
     () => {
+      document.getElementById('imagesSection').classList.add('hidden');
       goBackAndRender();
     }
-  )
+  );
 }
 
 // ========================================
-// DOCUMENT HANDLING
+// DOCUMENT HANDLING - UPDATED WITH IMAGES
 // ========================================
 
 function handleDocument(booking, isEdit = false) {
@@ -750,10 +953,20 @@ function handleDocument(booking, isEdit = false) {
         </div>
         
         ${(beforeImgs.length > 0 || afterImgs.length > 0) ? `
-          <h6 style="margin-top: 25px; color: #333;">Work Images:</h6>
-          <div class="document-images">
-            ${beforeImgs.map(img => `<div><p style="margin: 0 0 8px 0; font-weight: 600; color: #666;">Before:</p><img src="${img}" alt="Before"></div>`).join('')}
-            ${afterImgs.map(img => `<div><p style="margin: 0 0 8px 0; font-weight: 600; color: #666;">After:</p><img src="${img}" alt="After"></div>`).join('')}
+          <h6 style="margin-top: 25px; color: #333;">Work Images (Max 4 each):</h6>
+          <div class="document-images" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+            ${beforeImgs.map((img, idx) => `
+              <div style="text-align: center;">
+                <p style="margin: 0 0 8px 0; font-weight: 600; color: #666; font-size: 12px;">Before ${idx + 1}</p>
+                <img src="${img}" alt="Before" style="width: 100%; max-height: 120px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+            `).join('')}
+            ${afterImgs.map((img, idx) => `
+              <div style="text-align: center;">
+                <p style="margin: 0 0 8px 0; font-weight: 600; color: #666; font-size: 12px;">After ${idx + 1}</p>
+                <img src="${img}" alt="After" style="width: 100%; max-height: 120px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+            `).join('')}
           </div>
         ` : ''}
       </div>
@@ -811,7 +1024,7 @@ function updateDocumentTotal() {
 }
 
 // ========================================
-// INVOICE HANDLING
+// INVOICE HANDLING - UPDATED WITH DOWNLOAD
 // ========================================
 
 function initializeInvoice(booking) {
@@ -926,6 +1139,9 @@ function handleInvoice(booking, isEdit = false, isView = false) {
         <i class="fa fa-save"></i> Update Totals & Save Invoice
       </button>
     `;
+    
+    // Hide download button in edit mode
+    document.getElementById('modalDownloadInvoiceBtn').classList.add('hidden');
   } else if (isView) {
     content.innerHTML = `
       <div style="padding: 20px; background: white; border: 2px solid #f0f0f0; border-radius: 8px;">
@@ -985,6 +1201,9 @@ function handleInvoice(booking, isEdit = false, isView = false) {
         </div>
       </div>
     `;
+    
+    // Show download button in view mode
+    document.getElementById('modalDownloadInvoiceBtn').classList.remove('hidden');
   }
 }
 
@@ -1044,39 +1263,94 @@ function updateInvoiceTotals() {
 
 function handleMarkPaid(booking) {
   showPopup(
-    
     'Are you sure you want to mark this booking as paid and completed?',
     'delete',
     'Mark as Paid',
     'Yes',
-     () => {
+    () => {
       setTimeout(() => {
-          
-      showPopup(
-        'Booking marked as paid and completed!',
-         'success', 
-         'Success', 
-         'Close', 
-         () => {
+        showPopup(
+          'Booking marked as paid and completed!',
+          'success', 
+          'Success', 
+          'Close', 
+          () => {
             booking.status = 'completed';
             goBackAndRender();
-         }
+          }
         );
-        } , 1000);
-     }
-  )
+      }, 1000);
+    }
+  );
 }
 
 // ========================================
 // RENDER BOOKING LIST
 // ========================================
 
-function renderBookings(filter = '') {
+// ========================================
+// RENDER BOOKING LIST WITH FILTERS
+// ========================================
+
+function renderBookings(filter = '', filters = {}) {
   bookingListEl.innerHTML = '';
-  
-  const filteredBookings = bookingData.filter(b =>
-    b.id.includes(filter) || b.user.toLowerCase().includes(filter.toLowerCase())
-  );
+  filterSection.classList.remove('nopermission');
+  let filteredBookings = bookingData.filter(b => {
+    // Search filter
+    if (filter) {
+      const searchLower = filter.toLowerCase();
+      if (!(
+        b.id.toLowerCase().includes(searchLower) || 
+        b.user.toLowerCase().includes(searchLower) ||
+        b.email.toLowerCase().includes(searchLower) ||
+        b.phone.toLowerCase().includes(searchLower) ||
+        b.address.toLowerCase().includes(searchLower) ||
+        b.service.toLowerCase().includes(searchLower)
+      )) {
+        return false;
+      }
+    }
+    
+    // Status filter
+    if (filters.status && filters.status !== 'all' && b.status !== filters.status) {
+      return false;
+    }
+    
+    // Date filter
+    if (filters.dateFrom) {
+      const bookingDate = parseDate(b.date);
+      const fromDate = new Date(filters.dateFrom);
+      if (bookingDate < fromDate) return false;
+    }
+    
+    if (filters.dateTo) {
+      const bookingDate = parseDate(b.date);
+      const toDate = new Date(filters.dateTo);
+      toDate.setHours(23, 59, 59, 999);
+      if (bookingDate > toDate) return false;
+    }
+    
+    // Service filter
+    if (filters.service && filters.service !== 'all' && b.service !== filters.service) {
+      return false;
+    }
+    
+    // Price filter
+    if (filters.priceMin !== null && b.price < filters.priceMin) {
+      return false;
+    }
+    
+    if (filters.priceMax !== null && b.price > filters.priceMax) {
+      return false;
+    }
+    
+    // Urgent filter
+    if (filters.urgentOnly && !b.isUrgent) {
+      return false;
+    }
+    
+    return true;
+  });
 
   if (filteredBookings.length === 0) {
     bookingListEl.innerHTML = '<p style="text-align: center; padding: 40px; color: #999;">No bookings found</p>';
@@ -1104,8 +1378,26 @@ function renderBookings(filter = '') {
   });
 }
 
+
+
+// Price filters with debounce
+let priceTimeout;
+['priceMinFilter', 'priceMaxFilter'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function() {
+    clearTimeout(priceTimeout);
+    priceTimeout = setTimeout(applyFilters, 500);
+  });
+});
+
+// Search input
+searchInputEl.addEventListener('input', (e) => {
+  applyFilters();
+});
+
+
+
 // ========================================
-// SHOW BOOKING DETAIL
+// SHOW BOOKING DETAIL - UPDATED HIDE IMAGES
 // ========================================
 
 function showBookingDetail(booking) {
@@ -1116,6 +1408,15 @@ function showBookingDetail(booking) {
   searchInputEl.classList.add('hidden');
   bookingDetailEl.classList.remove('hidden');
   topbarwithbtn.classList.add('hidden');
+  filterSection.classList.add('nopermission');
+
+  if (filterSection.classList.contains('nopermission')) {
+    filterSection.innerHTML = '';
+  }
+
+
+  // ALWAYS HIDE IMAGES SECTION ON MAIN DETAIL PAGE
+  document.getElementById('imagesSection').classList.add('hidden');
 
   // Basic details
   document.getElementById('detailId').textContent = `#${booking.id}`;
@@ -1136,19 +1437,28 @@ function showBookingDetail(booking) {
   document.getElementById('detailDate').textContent = booking.date;
 
   // Hide all conditional sections initially
-  ['providerSection', 'startTimeSection', 'imagesSection', 'documentIconSection', 'invoiceIconSection', 'rejectedSection'].forEach(id => {
+  ['providerSection', 'startTimeSection', 'documentIconSection', 'invoiceIconSection', 'rejectedSection'].forEach(id => {
     document.getElementById(id).classList.add('hidden');
   });
+  endTimeSection.classList.add('hidden');
   
   // Clear actions
   document.getElementById('actionsSection').innerHTML = '';
   messageicon.classList.add('hidden');
 
+  // Show chat icon if status is "route" (In Route)
+  if (booking.status === 'route') {
+    messageicon.classList.remove('hidden');
+    messageicon.onclick = function() {
+      window.location.href = SITE_URL + 'pages/messages.php';
+    };
+  }
+
   // Show provider details if assigned or later
-  if (['assigned', 'route', 'started', 'completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status) && booking.providerName) {
+  if (['assigned', 'route', 'started', 'completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status) && booking.clientName) {
     document.getElementById('providerSection').classList.remove('hidden');
-    document.getElementById('detailProviderName').textContent = booking.providerName;
-    document.getElementById('detailProviderPhone').textContent = booking.providerPhone;
+    document.getElementById('detailProviderName').textContent = booking.clientName;
+    document.getElementById('detailProviderPhone').textContent = booking.clientPhone;
   }
 
   // Show start time if work started
@@ -1157,36 +1467,20 @@ function showBookingDetail(booking) {
     document.getElementById('detailStartTime').textContent = booking.startTime;
   }
 
-  // Show images if available
-  if (['started', 'completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status)) {
-    if (booking.beforeImages.length > 0 || booking.afterImages.length > 0) {
-      document.getElementById('imagesSection').classList.remove('hidden');
-      document.getElementById('imagesTitle').textContent = 'Work Images';
-      
-      if (booking.beforeImages.length > 0) {
-        document.getElementById('beforeWorkDiv').classList.remove('hidden');
-        renderImageGrid('beforeImagesGrid', booking.beforeImages, true, false);
-      } else {
-        document.getElementById('beforeWorkDiv').classList.add('hidden');
-      }
-      
-      if (booking.afterImages.length > 0) {
-        document.getElementById('afterWorkDiv').classList.remove('hidden');
-        renderImageGrid('afterImagesGrid', booking.afterImages, false, false);
-      } else {
-        document.getElementById('afterWorkDiv').classList.add('hidden');
-      }
-    }
-  }
-
   // Show document icon if document exists
-  if (['started', 'completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status) && booking.document.services.length > 0) {
+  if (booking.status === 'completed' || booking.status === 'completed_unpaid' || booking.status === 'unpaid_urgent' || booking.status === 'started') {
     document.getElementById('documentIconSection').classList.remove('hidden');
   }
 
   // Show invoice icon if invoice exists
   if (['completed_unpaid', 'completed', 'unpaid_urgent'].includes(booking.status) && booking.invoice.lines.length > 0) {
     document.getElementById('invoiceIconSection').classList.remove('hidden');
+  }
+
+  // Show end time if completed
+  if (booking.status === 'completed' || booking.status === 'completed_unpaid') {
+    endTimeSection.classList.remove('hidden');
+    detailendTime.textContent = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB');
   }
 
   // Show rejection reason
@@ -1286,17 +1580,6 @@ function renderActionButtons(booking) {
 }
 
 // ========================================
-// REVIEW FUNCTIONS
-// ========================================
-
-// function openReviewForm() {
-//   if (!currentBooking) return;
-//   document.getElementById('newreviewform').classList.remove('d-none');
-//   bookingDetailEl.classList.add('hidden');
-//   backBtnreviewformUser.textContent = currentBooking.providerName || currentBooking.user;
-// }
-
-// ========================================
 // EVENT LISTENERS
 // ========================================
 
@@ -1333,4 +1616,101 @@ document.getElementById('invoiceModal').addEventListener('click', (e) => {
 
 // Initial render
 renderBookings();
+
+// Check URL parameter for job ID and show detail if present
+function checkUrlForJobId() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const jobId = urlParams.get('job');
+  
+  if (jobId) {
+    // Find the booking by ID
+    const booking = bookingData.find(b => b.id === jobId);
+    if (booking) {
+      // Wait a bit for DOM to be ready, then show detail
+      setTimeout(() => {
+        showBookingDetail(booking);
+      }, 300);
+    }
+  }
+}
+
+// Check URL after initial render
+setTimeout(() => {
+  checkUrlForJobId();
+}, 200);
+
+
+
+
+// ADD ये functions यहाँ पर (currentBooking के बाद):
+// ========================================
+// FILTER FUNCTIONS
+// ========================================
+
+function toggleFilterSection() {
+ 
+  if (filterSection.style.display === 'none' || filterSection.style.display === '') {
+    filterSection.style.display = 'block';
+  } else {
+    filterSection.style.display = 'none';
+  }
+}
+
+function applyFilters() {
+  // Get filter values
+  const status = document.getElementById('statusFilter').value;
+  const dateFrom = document.getElementById('dateFromFilter').value;
+  const dateTo = document.getElementById('dateToFilter').value;
+  const service = document.getElementById('serviceFilter').value;
+  const priceMin = document.getElementById('priceMinFilter').value;
+  const priceMax = document.getElementById('priceMaxFilter').value;
+  const urgentOnly = document.getElementById('urgentFilter').checked;
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  
+  // Call renderBookings with filters
+  renderBookings(searchTerm, {
+    status,
+    dateFrom,
+    dateTo,
+    service,
+    priceMin: priceMin ? parseFloat(priceMin) : null,
+    priceMax: priceMax ? parseFloat(priceMax) : null,
+    urgentOnly
+  });
+}
+
+function clearFilters() {
+  document.getElementById('statusFilter').value = 'all';
+  document.getElementById('dateFromFilter').value = '';
+  document.getElementById('dateToFilter').value = '';
+  document.getElementById('serviceFilter').value = 'all';
+  document.getElementById('priceMinFilter').value = '';
+  document.getElementById('priceMaxFilter').value = '';
+  document.getElementById('urgentFilter').checked = false;
+  document.getElementById('searchInput').value = '';
+  
+  // Trigger filtering
+  applyFilters();
+}
+
+// Helper function to parse date
+function parseDate(dateStr) {
+  const [day, month, year] = dateStr.split('/');
+  return new Date(year, month - 1, day);
+}
+
+
+
+// Add ये code JavaScript file के अंत में, renderBookings(); के बाद:
+
+// Filter event listeners
+document.getElementById('applyFiltersBtn').addEventListener('click', applyFilters);
+document.getElementById('clearFiltersBtn').addEventListener('click', clearFilters);
+
+// Auto-apply filters on change
+document.getElementById('statusFilter').addEventListener('change', applyFilters);
+document.getElementById('dateFromFilter').addEventListener('change', applyFilters);
+document.getElementById('dateToFilter').addEventListener('change', applyFilters);
+document.getElementById('serviceFilter').addEventListener('change', applyFilters);
+document.getElementById('urgentFilter').addEventListener('change', applyFilters);
 

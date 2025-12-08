@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create Job
     document.getElementById("createjob").addEventListener("click", () => {
-        window.location.href = "create-service.php";
+        window.location.href = "new_service.php";
     });
 
 });

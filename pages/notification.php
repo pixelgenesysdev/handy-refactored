@@ -11,7 +11,7 @@ $page_js = 'pages_notification.js';
 <div id="notificationPage">
 
    <div class="topbarwithbtn">
-        <h3>Notification</h3>
+        <h3>Notifications</h3>
     </div>
 
     <div class="filter-container">
