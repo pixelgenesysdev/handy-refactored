@@ -81,6 +81,16 @@
                 btnElem.classList.add('half-btn');
                 popupBox.classList.add('logout-popup');
                 break;
+            case 'pro':
+                iconElem.src = `${SITE_URL}assets/images/popup-pro.png`;
+                closeIcon.style.display = 'none';
+                popupBox.classList.remove('error-popup', 'info-popup', 'success-popup', 'delete-popup');
+                btnElem2.style.display = 'block';
+                btnElem2.classList.remove('d-none');
+                btnElem2.onclick = hidePopup;
+                btnElem.classList.add('half-btn');
+                popupBox.classList.add('logout-popup');
+                break;
 
             case 'delete':
                 iconElem.src = `${SITE_URL}assets/images/popup-error.png`;

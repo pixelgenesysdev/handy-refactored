@@ -62,8 +62,42 @@ function openChat(name) {
   
   const chat = chatData[name] || [];
   chatHeader.innerHTML = `
-    <img src="${contacts.find(c => c.name === name).profilePic}" class="profile">
-    <div><h4>${name}</h4><p>Online</p></div>`;
+    <div class="usercontent">
+      <img src="${contacts.find(c => c.name === name).profilePic}" class="profile">
+      <div><h4>${name} Son Of Zawwar </h4><p>Online</p></div>
+    </div>
+    <div class="actions">
+      <button id="videoCallBtn" class="actionbtnschat"><i class="fa fa-video"></i></button>
+      <button id="audioCallBtn" class="actionbtnschat"><i class="fa fa-phone"></i></button>
+    </div>
+
+
+    `;
+
+  document.getElementById("videoCallBtn").addEventListener("click", function() {
+    
+      showPopup(
+        "$9.99/ for 10 minutes",
+        "pro",
+        "Make a payment for video session.",
+        "Continue",
+        () => {
+          window.location.href = `${SITE_URL}pages/payment_methods.php`;
+        }
+      );
+      
+  });
+  document.getElementById("audioCallBtn").addEventListener("click", function() {
+      showPopup(
+        "$9.99/ for 15 minutes",
+        "pro",
+        "Make a payment for audio call.",
+        "Continue",
+        () => {
+          window.location.href = `${SITE_URL}pages/payment_methods.php`;
+        }
+      );
+  });
   
   messagesDiv.innerHTML = '';
   chat.forEach(m => {

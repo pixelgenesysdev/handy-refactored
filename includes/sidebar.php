@@ -24,6 +24,9 @@
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>My Services</span>
     </a>
 
+    <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'community.php' || $currentPage == 'pro-requests.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/community"> 
+      <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Community" /><span>Community</span>
+    </a>
 
     <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'marketplace.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/marketplace"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Market Place" /><span>Market Place</span>

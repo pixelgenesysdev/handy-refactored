@@ -5,10 +5,43 @@ include '../includes/providerpage.php';
 ?>
 <script>
     
+    function BecomePro(e) {
+        e.classList.add("d-none");
+    
+            showPopup(
+            'Are you sure you want to become a pro?',
+            'pro',
+            'Confirm Become a Pro',
+            'OK',
+            () => {
+                setTimeout(() => {
+                    showPopup(
+                    'You’re now a Pro handyman.Premium tasks are live.',
+                    'success',
+                    'You’re officially a Pro',
+                    'OK',
+                    () => {
+                        ProRequests.classList.remove("d-none");
+                    }
+                    );
+                    
+                }, 500);
+                
+            }
+            );
+
+    
+
+    }
+
+
+
     </script>
 <div id="pagebox">
-    <div class="topbarwithbtn">
+    <div class="topbarwithbtn mb-4">
         <h3>My Services</h3>
+        <button class="btn btn-primary black    " id="VeiwAll" onclick="BecomePro(this)">Become a Pro</button>
+        <button class="btn btn-primary  d-none  " id="ProRequests" onclick="window.location.href='<?php echo SITE_URL; ?>pages/pro-requests.php'">Pro Requests</button>
     </div>
 
     <!-- toggle urgent -->

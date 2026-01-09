@@ -10,13 +10,10 @@ $page_js = 'pages_messages.js';
 
 <div id="messagesPage">
 
-    <div class="topbarwithbtn withbackbutton">
-        <h3 onclick="">
-           Messages
-        </h3>
-        <button class="btn btn-primary black" onclick="window.location.href='<?php echo SITE_URL; ?>pages/pro-chats.php'">
+    <div class="topbarwithbtn" class="withbackbutton">
+        <h3 onclick="history.back()" style="cursor: pointer;"><i class="fa-solid fa-arrow-left"></i>
            Pro Chats
-        </button>
+        </h3>
     </div>
 
     <div class="messaging-section">
