@@ -8,7 +8,7 @@ $page_js = 'auth_otp.js';
     <div class="firstcol-wrapper">
         <div class="firstcol-box">
             <img src="./assets/img/forgot-icon.png" alt="forgot-icon" class="forgot-icon">
-            <h2>Varification</h2>
+            <h2>Verification</h2>
              <p>Please check your email for verification code.
                 Your code is 4 digit in length.</p>
              

@@ -8,6 +8,6 @@
     }
      else {
         console.log('logged in');
-    }
+    } 
 
 </script>

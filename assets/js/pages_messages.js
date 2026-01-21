@@ -59,45 +59,56 @@ function openChat(name) {
   renderContacts();
   document.querySelectorAll('.contact').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-user="${name}"]`)?.classList.add('active');
+
   
+const currentPath = window.location.pathname;
+
+const showCallIcons = currentPath.includes('pro-chats');
+
+
   const chat = chatData[name] || [];
   chatHeader.innerHTML = `
     <div class="usercontent">
       <img src="${contacts.find(c => c.name === name).profilePic}" class="profile">
-      <div><h4>${name} Son Of Zawwar </h4><p>Online</p></div>
+      <div><h4>${name}</h4><p>Online</p></div>
     </div>
-    <div class="actions">
-      <button id="videoCallBtn" class="actionbtnschat"><i class="fa fa-video"></i></button>
-      <button id="audioCallBtn" class="actionbtnschat"><i class="fa fa-phone"></i></button>
-    </div>
+    ${
+        showCallIcons
+          ? `    <div id="actionsSectiontop" class="actions">
+          <button id="videoCallBtn" class="actionbtnschat"><i class="fa fa-video"></i></button>
+          <button id="audioCallBtn" class="actionbtnschat"><i class="fa fa-phone"></i></button>
+        </div>`
+          : ''
+      }
 
 
     `;
-
-  document.getElementById("videoCallBtn").addEventListener("click", function() {
-    
-      showPopup(
-        "$9.99/ for 10 minutes",
-        "pro",
-        "Make a payment for video session.",
-        "Continue",
-        () => {
-          window.location.href = `${SITE_URL}pages/payment_methods.php`;
-        }
-      );
+if (showCallIcons) {
+    document.getElementById("videoCallBtn").addEventListener("click", function() {
       
-  });
-  document.getElementById("audioCallBtn").addEventListener("click", function() {
-      showPopup(
-        "$9.99/ for 15 minutes",
-        "pro",
-        "Make a payment for audio call.",
-        "Continue",
-        () => {
-          window.location.href = `${SITE_URL}pages/payment_methods.php`;
-        }
-      );
-  });
+        showPopup(
+          "$9.99/ for 10 minutes",
+          "pro",
+          "Make a payment for video session.",
+          "Continue",
+          () => {
+            window.location.href = `${SITE_URL}pages/payment_methods.php`;
+          }
+        );
+        
+    });
+    document.getElementById("audioCallBtn").addEventListener("click", function() {
+        showPopup(
+          "$9.99/ for 15 minutes",
+          "pro",
+          "Make a payment for audio call.",
+          "Continue",
+          () => {
+            window.location.href = `${SITE_URL}pages/payment_methods.php`;
+          }
+        );
+    });
+  }
   
   messagesDiv.innerHTML = '';
   chat.forEach(m => {

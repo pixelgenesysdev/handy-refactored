@@ -16,7 +16,7 @@
     <a id="nav-btn" data-auth="yes" data-role="customer" class="btn-sidebar side-menu <?php echo ($currentPage == 'dashboard.php' || $currentPage == 'user_setting.php' || $currentPage == 'notification.php' || $currentPage == 'services.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers.php' || $currentPage == 'services_providers_details.php' || $currentPage == 'providers_services-details.php' || $currentPage == 'messages.php' || $currentPage == 'pro-chats.php' ) ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
-    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'provider_dashboard.php' || $currentPage == 'user_setting.php' || $currentPage == 'notification.php' || $currentPage == 'reviews.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/provider_dashboard.php">
+    <a id="nav-btn" data-auth="yes" data-role="provider" class="btn-sidebar side-menu <?php echo ($currentPage == 'provider_dashboard.php' || $currentPage == 'pro-requests.php'  || $currentPage == 'user_setting.php' || $currentPage == 'notification.php' || $currentPage == 'reviews.php' || $currentPage == 'messages.php' || $currentPage == 'pro-chats.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/provider_dashboard.php">
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/home.png" alt="Home" /><span>Home</span>
     </a>
 
@@ -24,7 +24,7 @@
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Marketplace" /><span>My Services</span>
     </a>
 
-    <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'community.php' || $currentPage == 'pro-requests.php' || $currentPage == 'myposts.php' || $currentPage == 'createpost.php' || $currentPage == 'editpost.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/community"> 
+    <a id="nav-btn" data-auth="yes" data-role="both" class="btn-sidebar side-menu <?php echo ($currentPage == 'community.php'|| $currentPage == 'myposts.php' || $currentPage == 'createpost.php' || $currentPage == 'editpost.php') ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>pages/community"> 
       <img src="<?php echo SITE_URL; ?>assets/images/sidebar-icons/marketplace.png" alt="Community" /><span>Community</span>
     </a>
 

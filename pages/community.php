@@ -12,7 +12,17 @@ include '../includes/bothpage.php';
         <h3 class="mb-0">Community</h3>
        <div>
             <button class="btn btn-primary" id="createPostsBtn" onclick="createPost()">Create Post</button>
-            <button class="btn btn-primary black" onclick="AskPro()">Ask A Pro</button>
+            <button class="btn btn-primary black" onclick="AskPro()" id="askProBtn">
+            Ask A Pro
+            </button>
+
+            <script>
+            const AskProBtn = document.getElementById('askProBtn');
+
+            if (loginUser.role !== 'customer') {
+                AskProBtn.remove();
+            }
+            </script>
              <button class="btn btn-primary" id="myPostsBtn"  onclick="showMyPosts()">My Posts</button>
         </div>
     </div>

@@ -42,10 +42,5 @@ $page_js = 'pages_messages.js';
 </div>
 
 
-<!-- SCRIPT -->
-
-
-
-
 
 <?php include '../includes/footer.php'; ?>

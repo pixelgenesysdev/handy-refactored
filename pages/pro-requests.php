@@ -19,6 +19,7 @@ function acceptRequest(btn) {
                     () => {
                         // Remove card after accept
                         btn.closest('.card').remove();
+                        window.location.href = '<?php echo SITE_URL; ?>pages/pro-chats.php';
                     }
                 );
             }, 400);
